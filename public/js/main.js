@@ -19,17 +19,21 @@ var Main = {
                 Main.scene = new BABYLON.Scene(Main.engine);
                 Main.scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
                 Map.Init();
-                Player.Init();
-                Monster.Init();
                 Main.engine.runRenderLoop(function()
                                             {
                                                 Main.scene.render();
                                                 Main.light.position = Main.camera.position;
                                             });
+                BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", Main.scene, function(meshes)
+                                                                                                    {
+                                                                                                        Player.Init({"mesh":Main.scene.getMeshByName("perso")});
+                                                                                                        Monster.Init();
+                                                                                                    });
                 Main.AddEvent(window, "resize", function()
                                                 {
                                                     Main.engine.resize();
                                                 });
+                console.log(Main.GetMyJson());
             },
 
     GetMyJson : function(dir, tar)
