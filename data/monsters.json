@@ -1,19 +1,9 @@
 {
-    "kebab": [
+    "name": "monster",
+    "hp": 1,
+    "Skills": [
         {
-            "Name": "kebab"
-        },
-        {
-            "Description": "a greasy kebab"
-        },
-        {
-            "Hit Points": 5
-        },
-        {
-            "Damage Resistance": 0
-        },
-        {
-            "skill ID": 1
+            "BaseAttack": 0
         }
     ]
 }
