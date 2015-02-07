@@ -37,8 +37,7 @@ var Map = {
 
      Ground: function()
                 {
-                    Main.ground = BABYLON.Mesh.CreatePlane("ground", 50, Main.scene);
-            	    Main.ground.rotation.x = Math.PI / 2;
+                    Main.ground = BABYLON.Mesh.CreateGround("ground", 50, 50, 2, Main.scene);
 	                Main.ground.material = new BABYLON.StandardMaterial("gMaterial", Main.scene);
 	                Main.ground.material.diffuseTexture = new BABYLON.Texture("public/img/ground1.png", Main.scene);
 	                Main.ground.checkCollisions = true;

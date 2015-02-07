@@ -61,10 +61,27 @@ var Player = {
                 }
     },
 
-    UserSkill: function(skillId)
+    UserSkill: function()
                 {
-                    console.log("toto");
-                    if(Main.action == 0)
+                    var skillId = Main.player.action;
+                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[skillId].cost)
+                    {
+                        console.log(skillId);
+                        Main.items.data[0].qty -= Main.skills.data[skillId].cost;
+                        for(var i = 0; i < Main.skills.data[skillId].cost; i++)
+                        {
+                            Main.items.model[Main.items.model.length - 1].dispose();
+                            Main.items.model.pop();
+                        }
+                        Monster.Life.Update(Main.skills.data[skillId].dmg);
+                        Main.action = 1;
+                        setTimeout(function()
+                                    {
+                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
+                                        Main.action = 0;
+                                    }, 3000);
+                    }
+                    /*if(Main.action == 0)
                     {
                         console.log(Main.skills.data[skillId].dmg);
                         Monster.Life.Update(Main.skills.data[skillId].dmg);
@@ -76,7 +93,7 @@ var Player = {
                                         Player.Life.Update(Main.skills.data[skillId].dmg);
                                         Main.action = 0;
                                     }, 3000);
-                    }
+                    }*/
             },
 
     Animation: function()
