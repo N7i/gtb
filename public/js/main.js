@@ -76,11 +76,9 @@ var Main = {
 
                 Main.AddEvent(document.getElementById("skill1"), "click", function()
                                                 {
-                                                    console.log("titi");
                                                     //Player.Animation();
                                                     if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[0].cost)
                                                     {
-                                                        console.log("toto");
                                                         Main.items.data[0].qty -= Main.skills.data[0].cost;
                                                         for(var i = 0; i < Main.skills.data[0].cost; i++)
                                                         {
@@ -91,7 +89,7 @@ var Main = {
                                                         Main.action = 1;
                                                         setTimeout(function()
                                                                     {
-                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * 4) + 1)-1)].dmg);
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
                                                                         Main.action = 0;
                                                                     }, 3000);
                                                     }
@@ -112,7 +110,7 @@ var Main = {
                                                         Main.action = 1;
                                                         setTimeout(function()
                                                                     {
-                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * 4) + 1)-1)].dmg);
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
                                                                         Main.action = 0;
                                                                     }, 3000);
                                                     }
@@ -133,7 +131,7 @@ var Main = {
                                                         Main.action = 1;
                                                         setTimeout(function()
                                                                     {
-                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * 4) + 1)-1)].dmg);
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
                                                                         Main.action = 0;
                                                                     }, 3000);
                                                     }
@@ -154,7 +152,7 @@ var Main = {
                                                         Main.action = 1;
                                                         setTimeout(function()
                                                                     {
-                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * 4) + 1)-1)].dmg);
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
                                                                         Main.action = 0;
                                                                     }, 3000);
                                                     }

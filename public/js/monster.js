@@ -32,11 +32,17 @@ var Monster = {
                 {
                     if(Main.monster.data.hp > 0)
                     {
-                        var r = (Math.floor(Math.random() * 100) + 0)/100
-                        Main.monster.data.hp = Main.monster.data.hp - (dom*(1-Main.monster.data.resistance));
-                        // *5 car taille de base de la barre à voiravec des variables
-                        Main.monster.model.lifebar.scaling = new BABYLON.Vector3(Main.monster.data.hp*5, 2, 2);
-                        Main.monster.model.lifebar.material.diffuseColor = Main.monster.data.hp >= 0.5 ? new BABYLON.Color3(0, 1, 0) : Main.monster.data.hp >= 0.3 ? new BABYLON.Color3(0.9, 0.4, 0) : new BABYLON.Color3(1, 0, 0);
+                        if (((Math.floor(Math.random() * 100) + 0)/100) > Main.monster.data.dodge)
+                        {
+                            Main.monster.data.hp = Main.monster.data.hp - (dom*(1-Main.monster.data.resistance));
+                            // *5 car taille de base de la barre à voiravec des variables
+                            Main.monster.model.lifebar.scaling = new BABYLON.Vector3(Main.monster.data.hp*5, 2, 2);
+                            Main.monster.model.lifebar.material.diffuseColor = Main.monster.data.hp >= 0.5 ? new BABYLON.Color3(0, 1, 0) : Main.monster.data.hp >= 0.3 ? new BABYLON.Color3(0.9, 0.4, 0) : new BABYLON.Color3(1, 0, 0);
+                        }
+                        else
+                        {
+                            console.log("dodge");
+                        }
                     }
                     else
                     {
