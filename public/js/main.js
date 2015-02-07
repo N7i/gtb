@@ -8,6 +8,7 @@ var Main = {
     camera: {},
     player: {},
     monster: {},
+    life: {"player":{},"monster":{}},
     xhr: {},
     canvas: document.getElementById("renderCanvas"),
     json: {}, // récupére des objets json
@@ -33,7 +34,13 @@ var Main = {
                                                 {
                                                     Main.engine.resize();
                                                 });
-                console.log(Main.GetMyJson());
+
+                Main.AddEvent(document.getElementById("skill0"), "click", function()
+                                                {
+                                                    Player.Life.Update(10);
+                                                    console.log("toot");
+                                                    //document.getElementById("renderCanvas");
+                                                });
             },
 
     GetMyJson : function(dir, tar)
@@ -79,4 +86,4 @@ var Main = {
                 }
 };
 
-Main.AddEvent(window, "load", Main.Init());
+Main.AddEvent(window, "load", Main.Init);
