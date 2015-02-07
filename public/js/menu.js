@@ -47,10 +47,16 @@ var Main = {
         for (var i = 0; i < items.data.length; i++) {
             shopBox.innerHTML += "<div id=\"item" + i + "\">";
             shopBox.innerHTML += "<div> <img src=\"public/img/" + items.data[i].name + ".png\"/> </div>";
-            shopBox.innerHTML += "<div>" + items.data[i].name + "</div>";
-            shopBox.innerHTML += "<div>" + items.data[i].qty + "</div>";
+            shopBox.innerHTML += "<div> <a href=\"#\" onclick=\"Main.AddItem(" + i + ");\">" + items.data[i].name + "</a></div>";
+            shopBox.innerHTML += "<div> 0.50€ </div>";
+            shopBox.innerHTML += "<div id=\"item" + i + "_qty\">" + items.data[i].qty + "</div>";
             shopBox.innerHTML += "</div>";
         }
+    },
+
+    AddItem: function (itemIndex) {
+        Main.items.data[itemIndex].qty += 1;
+        document.getElementById("item" + itemIndex + "_qty").innerHTML = Main.items.data[itemIndex].qty;
     },
 
     GetMyJson: function (name) {
