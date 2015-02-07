@@ -1,7 +1,12 @@
 [
     {
-        "name": "power",
-        "id":0,
-        "qty":10
+        "name": "energy",
+        "id": 0,
+        "qty": 10
+    },
+    {
+        "name": "potion",
+        "id": 1,
+        "qty": 5
     }
 ]
