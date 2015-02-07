@@ -9,31 +9,84 @@ var Player = {
 
     GenPlayer: function(mesh)
                 {
-                    Main.player = mesh;
-                    Main.player.scaling = new BABYLON.Vector3(4, 4, 4);
+                    Main.player.model.body = mesh;
+                    Main.player.model.body.scaling = new BABYLON.Vector3(4, 4, 4);
                    // Main.player = BABYLON.Mesh.CreateBox("player", 2, Main.scene);
                     //Main.player = BABYLON.Mesh.
-                    Main.player.position.y = 3.0;
-                    Main.player.position.x = 15.0;
-                    Main.player.position.z = 10.0;
-                    Main.player.rotation.y = -(Math.PI/1.5);
-                    Main.player.material = new BABYLON.StandardMaterial("player", Main.scene);
-                    Main.player.material.diffuseTexture = new BABYLON.Texture("public/img/box0.png", Main.scene);
+                    Main.player.model.body.position.y = 3.0;
+                    Main.player.model.body.position.x = 15.0;
+                    Main.player.model.body.position.z = 10.0;
+                    Main.player.model.body.rotation.y = -(Math.PI/1.5);
+                    Main.player.model.body.material = new BABYLON.StandardMaterial("player", Main.scene);
+                    Main.player.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/box0.png", Main.scene);
                 },
 
     Life: {
         Init: function()
                 {
-                    Main.life.player = BABYLON.Mesh.CreateBox("playerlife", 2, Main.scene);
-                    Main.life.player.scaling = new BABYLON.Vector3(1, 0.2, 0.2);
-                    Main.life.player.parent = Main.player;
-                    Main.life.player.position.y = 3.0;
+                    Main.player.model.lifebar = BABYLON.Mesh.CreateBox("playerlife", 2, Main.scene);
+                    Main.player.model.lifebar.scaling = new BABYLON.Vector3(1, 0.2, 0.2);
+                    Main.player.model.lifebar.parent = Main.player.model.body;
+                    Main.player.model.lifebar.position.y = 3.0;
+                    //.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
+                    Main.player.model.lifebar.material = new BABYLON.StandardMaterial("texture1", Main.scene);
+                    Main.player.model.lifebar.material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+
                 },
         Update: function(dom)
                 {
-                    Main.player.hp = 1-(dom/100);
-                    Main.life.player.scaling = new BABYLON.Vector3(Main.player.hp, 0.2, 0.2);
-                    console.log(Main.player.hp);
+                    if(Main.player.data.hp >= 0)
+                    {
+                        Main.player.data.hp = Main.player.data.hp-dom;
+                        Main.player.model.lifebar.scaling = new BABYLON.Vector3(Main.player.data.hp, 0.2, 0.2);
+                        Main.player.model.lifebar.material.diffuseColor = Main.player.data.hp >= 0.5 ? new BABYLON.Color3(0, 1, 0) : Main.player.data.hp >= 0.3 ? new BABYLON.Color3(0.9, 0.4, 0) : new BABYLON.Color3(1, 0, 0);
+                    }
+                    else
+                    {
+                        Player.Life.Dead();
+                    }
+                },
+
+        Dead: function()
+                {
+                    var pos = Main.player.model.body.position;
+                    Main.player.model.body.dispose();
+                    var dead = BABYLON.Mesh.CreateBox("dead", 10, Main.scene);
+                    dead.material = new BABYLON.StandardMaterial("dead", Main.scene);
+                    dead.material.diffuseTexture = new BABYLON.Texture("public/img/rip.png", Main.scene);
+                    dead.position = pos;
+                    dead.position.y += 8;
+                    dead.checkCollisions = true;
+                    dead.setPhysicsState(BABYLON.PhysicsEngine.BoxImpostor, { mass: 1 });
                 }
-    }
+    },
+    Animation: function()
+                {
+                    //var animationBox = new BABYLON.Animation("myAnimation", "scaling.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox = new BABYLON.Animation("myAnimation", "scaling.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, "");
+
+                    // An array with all animation keys
+                    var keys = [];
+
+                   //At the animation key 0, the value of scaling is "1"
+                    keys.push({
+                        frame: 0,
+                        value: 1
+                    });
+
+                    //At the animation key 20, the value of scaling is "0.2"
+                    keys.push({
+                        frame: 20,
+                        value: 0.2
+                    });
+
+                    //At the animation key 100, the value of scaling is "1"
+                    keys.push({
+                        frame: 100,
+                        value: 1
+                    });
+                    animationBox.setKeys(keys);
+                    Main.player.model.body.animations.push(animationBox);
+                    Main.scene.beginAnimation(Main.player.model.body, 0, 100, true);
+                }
 };
