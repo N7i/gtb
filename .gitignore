@@ -158,6 +158,6 @@ FakesAssemblies/
 *.plg
 # Visual Studio 6 workspace options file
 *.opt
-
+public/blend
 *.sln
 Web.config
