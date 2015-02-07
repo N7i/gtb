@@ -1,14 +1,34 @@
 "use strict";
 
 var Main = {
+	engine: {},
+	scene: {},
+    light: {},
+    ground: {},
+    camera: {},
+    player: {},
+    monster: {},
     xhr: {},
-    target: document.getElementById("renderCanvas"),
+    canvas: document.getElementById("renderCanvas"),
     json: {}, // récupére des objets json
-    menu: {}, // objet json menu
 
     Init: function ()
             {
                 Main.xhr = Main.Xhttpr();
+                Main.engine = new BABYLON.Engine(Main.canvas, true);
+                Main.scene = new BABYLON.Scene(Main.engine);
+                Main.scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+                Map.Init();
+                Player.Init();
+                Monster.Init();
+                Main.engine.runRenderLoop(function()
+                                            {
+                                                Main.scene.render();
+                                            });
+                Main.AddEvent(window, "resize", function()
+                                                {
+                                                    Main.engine.resize();
+                                                });
             },
 
     GetMyJson : function(dir, tar)
