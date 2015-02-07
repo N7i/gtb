@@ -1,0 +1,13 @@
+{
+    "power": [
+        {
+            "Name": "power"
+        },
+        {
+            "Description": "gives you power!"
+        },
+        {
+            "Effect": "rien"
+        }
+    ]
+}

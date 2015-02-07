@@ -1,0 +1,16 @@
+{
+    "base attack": [
+        {
+            "ID": 1
+        },
+        {
+            "Name": "base attack"
+        },
+        {
+            "Description": "you hit him!"
+        },
+        {
+            "Damage": 1
+        }
+    ]
+}
