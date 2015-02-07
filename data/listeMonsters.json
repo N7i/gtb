@@ -1,0 +1,26 @@
+[
+    {
+        "name": "DEBIT CHEQUES",
+        "img": "img/chequier",
+        "resistance": "0.3",
+        "dodge": "0.05",
+        "skills": [
+            0,
+            1
+        ],
+        "hp": "48.2",
+        "date": "01/02/2015"
+    },
+    {
+        "name": "IMPUTATION DES TRANSAC",
+        "img": "img/atm",
+        "resistance": "0.5",
+        "dodge": "0.0",
+        "skills": [
+            2,
+            3
+        ],
+        "hp": "40",
+        "date": "02/02/2015"
+    }
+]
