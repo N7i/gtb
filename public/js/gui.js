@@ -13,6 +13,15 @@ var Gui = {
         Display: {
             Skills: function()
                     {
+                        var callback = function(id)
+                                        {
+                                            return function()
+                                                    {
+                                                        Main.player.action = Main.player.data.skills[id];
+                                                        Player.UserSkill();
+                                                    }
+                                        };
+
                         for(var i = 0; i < Main.player.data.skills.length; i++)
                         {
                             Main.skills.model[Main.player.data.skills[i]] = BABYLON.Mesh.CreateSphere("sphere", 16, 0.2, Main.scene);
@@ -23,8 +32,7 @@ var Gui = {
                             Main.skills.model[Main.player.data.skills[i]].position.x = -2 + (i/3);
                             Main.skills.model[Main.player.data.skills[i]].position.y = -0.7;
                             Main.skills.model[Main.player.data.skills[i]].actionManager = new BABYLON.ActionManager(Main.scene);
-                            Main.player.action = Main.player.data.skills[i];
-                            Main.skills.model[Main.player.data.skills[i]].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, Player.UserSkill));
+                            Main.skills.model[Main.player.data.skills[i]].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, callback(i)));
                         }
                     },
 

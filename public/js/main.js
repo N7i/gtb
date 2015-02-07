@@ -143,6 +143,7 @@ var Main = {
                                                     //Player.Animation();
                                                     if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[3].cost)
                                                     {
+                                                        console.log("yolo");
                                                         Main.items.data[0].qty -= Main.skills.data[3].cost;
                                                         for(var i = 0; i < Main.skills.data[3].cost; i++)
                                                         {
