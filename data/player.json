@@ -1,30 +1,6 @@
 {
-    "player": [
-        {
-            "Name": "brunoob"
-        },
-        {
-            "Hit Points": 10
-        },
-        {
-            "Damage Resistance": 0
-        },
-        {
-            "Experience Points": 0
-        },
-        {
-            "Items": [
-                {
-                    "Power": 2
-                }
-            ]
-        },
-        {
-            "Skills": [
-                {
-                    "Base Attack": 1
-                }
-            ]
-        }
-    ]
+    "name": "brunoob",
+    "hp": 1,
+    "skills": [0, 1, 2, 3],
+    "items": [0]
 }
