@@ -2,7 +2,6 @@
 
 var Main = {
     xhr: {},
-    target: document.getElementById("renderCanvas"),
     json: {}, // récupére des objets json
     menu: {}, // objet json menu
 

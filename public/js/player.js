@@ -60,6 +60,25 @@ var Player = {
                     dead.setPhysicsState(BABYLON.PhysicsEngine.BoxImpostor, { mass: 1 });
                 }
     },
+
+    UserSkill: function(skillId)
+                {
+                    console.log("toto");
+                    if(Main.action == 0)
+                    {
+                        console.log(Main.skills.data[skillId].dmg);
+                        Monster.Life.Update(Main.skills.data[skillId].dmg);
+                        Main.action = 1;
+                        setTimeout(function(i)
+                                    {
+                                        console.log(i);
+                                        //Player.Life.Update(Main.skills.data[i].dmg);
+                                        Player.Life.Update(Main.skills.data[skillId].dmg);
+                                        Main.action = 0;
+                                    }, 3000);
+                    }
+            },
+
     Animation: function()
                 {
                     //var animationBox = new BABYLON.Animation("myAnimation", "scaling.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);

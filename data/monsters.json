@@ -1,9 +1,7 @@
 {
     "name": "monster",
     "hp": 1,
-    "Skills": [
-        {
-            "BaseAttack": 0
-        }
-    ]
+    "resistance":0.3,
+    "dodge":0.1,
+    "skills": [0, 1, 2, 3]
 }
