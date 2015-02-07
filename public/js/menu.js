@@ -16,6 +16,7 @@ var Main = {
         Main.items.data = Main.GetMyJson("items");
         Main.listeMonsters.data = Main.GetMyJson("listeMonsters");
         Main.SetPlayerInfo(Main.player, Main.items, Main.skills);
+        Main.SetShop(Main.items);
     },
 
     SetPlayerInfo: function (player, items, skills) {
@@ -40,20 +41,17 @@ var Main = {
         document.getElementById("playerInfo_skills").innerHTML = skillsHtmlString;
     },
 
-    /*
-    <li id="playerInfo_items">
-        Items:
-        <ul>
-            <li>Power: 2</li>
-        </ul>
-    </li>
-    <li id="playerInfo_skills">
-        Skills:
-        <ul>
-            <li>Base Attack: 1</li>
-        </ul>
-    </li>
-    */
+    SetShop: function (items) {
+        var shopBox = document.getElementById("shopBox");
+        shopBox.innerHTML = "Shop";
+        for (var i = 0; i < items.data.length; i++) {
+            shopBox.innerHTML += "<div id=\"item" + i + "\">";
+            shopBox.innerHTML += "<div> <img src=\"public/img/" + items.data[i].name + ".png\"/> </div>";
+            shopBox.innerHTML += "<div>" + items.data[i].name + "</div>";
+            shopBox.innerHTML += "<div>" + items.data[i].qty + "</div>";
+            shopBox.innerHTML += "</div>";
+        }
+    },
 
     GetMyJson: function (name) {
         Main.xhr.open("GET", 'data/' + name + '.json', false);
