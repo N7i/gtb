@@ -43,30 +43,36 @@ var Player = {
                     }
                     else
                     {
+                        Monster.Label.Write("Vous êtes mort");
                         Player.Life.Dead();
                     }
                 },
 
         Dead: function()
                 {
-                    var pos = Main.player.model.body.position;
-                    Main.player.model.body.dispose();
-                    var dead = BABYLON.Mesh.CreateBox("dead", 10, Main.scene);
-                    dead.material = new BABYLON.StandardMaterial("dead", Main.scene);
-                    dead.material.diffuseTexture = new BABYLON.Texture("public/img/rip.png", Main.scene);
-                    dead.position = pos;
-                    dead.position.y += 8;
-                    dead.checkCollisions = true;
-                    dead.setPhysicsState(BABYLON.PhysicsEngine.BoxImpostor, { mass: 1 });
+                    if (Main.endMatch == 0)
+                    {
+                        var pos = Main.player.model.body.position;
+                        Main.player.model.body.dispose();
+                        //var dead = BABYLON.Mesh.CreateBox("dead", 10, Main.scene);
+                        Main.cross.isVisible = true;
+                        Main.cross.material = new BABYLON.StandardMaterial("dead", Main.scene);
+                        Main.cross.material.diffuseTexture = new BABYLON.Texture("public/img/CelticCross.png", Main.scene);
+                        Main.cross.position = pos;
+                        Main.cross.position.y += 0.8;
+                        Main.cross.checkCollisions = true;
+                        Main.cross.setPhysicsState(BABYLON.PhysicsEngine.BoxImpostor, { mass: 1 });
+                        Main.endMatch = 1;
+                    }
+
                 }
     },
 
     UserSkill: function()
                 {
                     var skillId = Main.player.action;
-                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[skillId].cost)
+                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[skillId].cost && Main.endMatch == 0)
                     {
-                        console.log(skillId);
                         Main.items.data[0].qty -= Main.skills.data[skillId].cost;
                         for(var i = 0; i < Main.skills.data[skillId].cost; i++)
                         {
@@ -77,23 +83,13 @@ var Player = {
                         Main.action = 1;
                         setTimeout(function()
                                     {
-                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
-                                        Main.action = 0;
+                                        if (Main.endMatch == 0)
+                                        {
+                                            Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
+                                            Main.action = 0;
+                                        }
                                     }, 3000);
                     }
-                    /*if(Main.action == 0)
-                    {
-                        console.log(Main.skills.data[skillId].dmg);
-                        Monster.Life.Update(Main.skills.data[skillId].dmg);
-                        Main.action = 1;
-                        setTimeout(function(i)
-                                    {
-                                        console.log(i);
-                                        //Player.Life.Update(Main.skills.data[i].dmg);
-                                        Player.Life.Update(Main.skills.data[skillId].dmg);
-                                        Main.action = 0;
-                                    }, 3000);
-                    }*/
             },
 
     Animation: function()
