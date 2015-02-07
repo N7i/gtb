@@ -1,13 +1,7 @@
-{
-    "power": [
-        {
-            "Name": "power"
-        },
-        {
-            "Description": "gives you power!"
-        },
-        {
-            "Effect": "rien"
-        }
-    ]
-}
+[
+    {
+        "name": "power",
+        "id":0,
+        "qty":10
+    }
+]

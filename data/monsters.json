@@ -1,6 +1,8 @@
 {
     "name": "monster",
     "hp": 1,
+    "resistance":0.3,
+    "dodge":0.9,
     "Skills": [
         {
             "BaseAttack": 0

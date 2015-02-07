@@ -1,9 +1,6 @@
 {
     "name": "brunoob",
     "hp": 1,
-    "Skills": [
-        {
-            "BaseAttack": 0
-        }
-    ]
+    "skills": [0, 1, 2, 3],
+    "items": [0]
 }
