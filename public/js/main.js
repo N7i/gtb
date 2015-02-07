@@ -19,7 +19,11 @@ var Main = {
             "body": {},
             "lifebar":{}
         },
-        "data":{}
+        "data":{},
+        "label":{
+            "Plan":{},
+            "Texture":{}
+        }
     },
     skills: {
         "model":[],
@@ -33,6 +37,8 @@ var Main = {
     xhr: {},
     canvas: document.getElementById("renderCanvas"),
     json: {}, // récupére des objets json
+    endMatch:0,
+    cross:{},
 
     Init: function ()
             {
@@ -52,12 +58,24 @@ var Main = {
                                                 Main.scene.render();
                                                 Main.light.position = Main.camera.position;
                                             });
+
+                BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "cadi.babylon", Main.scene, function(meshes)
+                                                                                                    {
+                                                                                                        Monster.Init({"mesh":meshes[0]});
+
+                                                                                                    });
+
                 BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", Main.scene, function(meshes)
                                                                                                     {
                                                                                                         Player.Init({"mesh":Main.scene.getMeshByName("perso")});
-                                                                                                        Monster.Init();
                                                                                                         Gui.Init();
 
+                                                                                                    });
+
+                BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "CelticCross.babylon", Main.scene, function(meshes)
+                                                                                                    {
+                                                                                                        Main.cross = meshes[0];
+                                                                                                        Main.cross.isVisible = false;
                                                                                                     });
 
 
