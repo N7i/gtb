@@ -11,7 +11,8 @@ var Main = {
             "body": {},
             "lifebar":{}
         },
-        "data":{}
+        "data":{},
+        "action":{}
     },
     monster: {
         "model":{

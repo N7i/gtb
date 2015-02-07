@@ -61,9 +61,9 @@ var Player = {
                 }
     },
 
-    UserSkill: function(skillId)
+    UserSkill: function()
                 {
-                    console.log("toto");
+                    var skillId = Main.player.action;
                     if(Main.action == 0)
                     {
                         console.log(Main.skills.data[skillId].dmg);

@@ -23,7 +23,8 @@ var Gui = {
                             Main.skills.model[Main.player.data.skills[i]].position.x = -2 + (i/3);
                             Main.skills.model[Main.player.data.skills[i]].position.y = -0.7;
                             Main.skills.model[Main.player.data.skills[i]].actionManager = new BABYLON.ActionManager(Main.scene);
-                            //Main.skills.model[Main.player.data.skills[i]].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, Player.UserSkill(Main.player.data.skills[i])));
+                            Main.player.action = Main.player.data.skills[i];
+                            Main.skills.model[Main.player.data.skills[i]].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, Player.UserSkill));
                         }
                     },
 
