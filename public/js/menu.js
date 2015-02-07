@@ -7,6 +7,7 @@ var Main = {
     player: {},
     skills: {},
     items: {},
+    monsters: {},
     listeMonsters: {},
 
     Init: function () {
@@ -14,6 +15,7 @@ var Main = {
         Main.player.data = Main.GetMyJson("player");
         Main.skills.data = Main.GetMyJson("skills");
         Main.items.data = Main.GetMyJson("items");
+        Main.monsters.data = Main.GetMyJson("monsters");
         Main.listeMonsters.data = Main.GetMyJson("listeMonsters");
         Main.SetPlayerInfo(Main.player, Main.items, Main.skills);
         Main.SetShop(Main.items);
@@ -57,6 +59,14 @@ var Main = {
     AddItem: function (itemIndex) {
         Main.items.data[itemIndex].qty += 1;
         document.getElementById("item" + itemIndex + "_qty").innerHTML = Main.items.data[itemIndex].qty;
+    },
+
+    SelectMonster: function (monsterIndex) {
+        Main.monsters.data[0].name = Main.listeMonsters.data[monsterIndex].name;
+        Main.monsters.data[0].hp = Main.listeMonsters.data[monsterIndex].hp;
+        Main.monsters.data[0].resistance = Main.listeMonsters.data[monsterIndex].resistance;
+        Main.monsters.data[0].dodge = Main.listeMonsters.data[monsterIndex].dodge;
+        Main.monsters.data[0].skills = Main.listeMonsters.data[monsterIndex].skills;
     },
 
     GetMyJson: function (name) {
