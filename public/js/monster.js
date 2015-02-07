@@ -1,22 +1,25 @@
 "use strict";
 
 var Monster = {
-    Init: function()
+    Init: function(obj)
             {
-                Monster.GenMonster();
+                Monster.GenMonster(obj.mesh);
                 Monster.Life.Init();
-                //Monster.Label.Init();
+                Monster.Label.Init();
             },
 
-    GenMonster: function()
+    GenMonster: function(mesh)
                 {
-                    Main.monster.model.body = BABYLON.Mesh.CreateBox("monster", 10, Main.scene);
+                    //Main.monster.model.body = BABYLON.Mesh.CreateBox("monster", 10, Main.scene);
+                    Main.monster.model.body = mesh;
+                    Main.monster.model.body.scaling = new BABYLON.Vector3(1, 1, 1);
+                    //Main.monster.model.body.material = new BABYLON.StandardMaterial("cheques", Main.scene);
                     Main.monster.model.body.position.y = 5.0;
                     Main.monster.model.body.position.x = -15.0;
                     Main.monster.model.body.position.z = -10.0;
                     Main.monster.model.body.rotation.y = -(Math.PI/1.5);
-                    Main.monster.model.body.material = new BABYLON.StandardMaterial("monster", Main.scene);
-                    Main.monster.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/box0.png", Main.scene);
+                    //Main.monster.model.body.material = new BABYLON.StandardMaterial("monster", Main.scene);
+                    //Main.monster.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/box0.png", Main.scene);
                 },
     Life:{
         Init: function()
@@ -41,27 +44,37 @@ var Monster = {
                         }
                         else
                         {
-                            console.log("dodge");
+                            Monster.Label.Write(Main.monster.data.name+" a esquivé votre attaque!!");
                         }
                     }
                     else
                     {
                         Main.monster.model.body.dispose();
-                        
+                        Monster.Label.Write("Vous remportez la victoire");
                     }
                 }
-    }
-        //,
-    /*Label:{
+    },
+    Label:{
         Init: function()
                 {
-                    Main.label.monster = BABYLON.Mesh.CreateGround("monsterlabel", 2, 2, 2, Main.scene);
-                        //CreatePlane("monsterlabel", 2, Main.scene);
-                    Main.label.monster.scaling = new BABYLON.Vector3(5, 2, 2);
-                    Main.label.monster.parent = Main.life.monster;
-                    Main.label.monster.position.y = 4.0;
-                    Main.label.monster.billboardMode = BABYLON.AbstractMesh.BILLBOARDMODE_ALL;
+                    Main.monster.label.Plan = BABYLON.Mesh.CreatePlane("label", 80, Main.scene, false);
+                    Main.monster.label.Plan.material = new BABYLON.StandardMaterial("background", Main.scene);
+                    //Main.monster.label.Plan.scaling.z = 0.3;
+                    //Main.monster.label.Plan.scaling.x = 0.8;
+                    //Main.monster.label.Plan.scaling.y = 0.4;
+                    Main.monster.label.Plan.position.z = -60;
+                    Main.monster.label.Plan.position.y = 20;
+                    Main.monster.label.Plan.position.x = -65;
+                    Main.monster.label.Plan.rotation.y = -2.3;
+                    Main.monster.label.Texture = new BABYLON.DynamicTexture("dynamic texture", 512, Main.scene, true);
+                    Main.monster.label.Plan.material.diffuseTexture = Main.monster.label.Texture;
+                    Main.monster.label.Plan.material.specularColor = new BABYLON.Color3(0, 0, 0);
+                    Main.monster.label.Plan.material.backFaceCulling = false;
+                },
 
-                }*/
-    //}
+        Write: function(txt)
+                {
+                    Main.monster.label.Texture.drawText(txt, null, 80, "bold 40px Segoe UI", "white", "black");
+                }
+    }
 };
