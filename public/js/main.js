@@ -24,6 +24,7 @@ var Main = {
                 Main.engine.runRenderLoop(function()
                                             {
                                                 Main.scene.render();
+                                                Main.light.position = Main.camera.position;
                                             });
                 Main.AddEvent(window, "resize", function()
                                                 {
