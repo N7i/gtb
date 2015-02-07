@@ -2,32 +2,84 @@
 <html>
     <head>
         <title>our super game</title>
+        <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="public/bootstrap/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="public/css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div id="monsterList">
-            <ul>
-                <li>MONSTER</li>
-            </ul>
+        <div id="main">
+            <div id="monsterList">
+                <div class="row">
+                    <div class="col-md-2"><canvas></canvas></div>
+                    <div class="col-md-2">Monster name</div>
+                    <div class="col-md-2">LVLV</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><canvas></canvas></div>
+                    <div class="col-md-2">Monster name</div>
+                    <div class="col-md-2">LVLV</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><canvas></canvas></div>
+                    <div class="col-md-2">Monster name</div>
+                    <div class="col-md-2">LVLV</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><canvas></canvas></div>
+                    <div class="col-md-2">Monster name</div>
+                    <div class="col-md-2">LVLV</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><canvas></canvas></div>
+                    <div class="col-md-2">Monster name</div>
+                    <div class="col-md-2">LVLV</div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="shop" class="col-md-4">
+                    Click to buy:
+                    <ul>
+                        <li>
+                            <table>
+                                <tr>
+                                    <td>NB</td>
+                                    <td>Energy</td>
+                                </tr>
+                                <tr>
+                                    <td>NB</td>
+                                    <td>Potion</td>
+                                </tr>
+                                <tr>
+                                    <td>NB</td>
+                                    <td>Potion</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+                <div id="playerInfo" class="col-md-4">
+                    <ul>
+                        <li>Name: brunoob</li>
+                        <li>Damage Resistance: 0</li>
+                        <li>
+                            Items:
+                            <ul>
+                                <li>Power: 2</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Skills:
+                            <ul>
+                                <li>Base Attack: 1</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div id="playerInfo">
-            Name: brunoob
-            Hit Points: 10
-            Damage Resistance: 0
-            Experience Points: 0
-            Items: 
-            <ul>
-                <li>Power: 2</li>
-            </ul>
-            Skills: 
-            <ul>
-                <li>Base Attack: 1</li>
-            </ul>
-        </div>
-        <div id="shop">
-            Click to buy:
-            <ul>
-                <li>PPPOOOWWWWEEEER!!!!!</li>
-            </ul>
-        </div>
+
+        <script src="public/js/jquery.min.js"></script>
+        <script src="public/bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>
