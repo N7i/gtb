@@ -59,9 +59,8 @@ var Main = {
                                                 Main.light.position = Main.camera.position;
                                             });
 
-                BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "cheques.babylon", Main.scene, function(meshes)
+                BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "cadi.babylon", Main.scene, function(meshes)
                                                                                                     {
-                                                                                                        console.log(meshes);
                                                                                                         Monster.Init({"mesh":meshes[0]});
 
                                                                                                     });
@@ -69,7 +68,6 @@ var Main = {
                 BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", Main.scene, function(meshes)
                                                                                                     {
                                                                                                         Player.Init({"mesh":Main.scene.getMeshByName("perso")});
-                                                                                                        Monster.Init();
                                                                                                         Gui.Init();
 
                                                                                                     });

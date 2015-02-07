@@ -10,7 +10,6 @@ var Monster = {
 
     GenMonster: function(mesh)
                 {
-                    console.log(mesh);
                     //Main.monster.model.body = BABYLON.Mesh.CreateBox("monster", 10, Main.scene);
                     Main.monster.model.body = mesh;
                     Main.monster.model.body.scaling = new BABYLON.Vector3(1, 1, 1);
