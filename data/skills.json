@@ -1,21 +1,25 @@
 [
     {
-        "id":0,
+        "id": 0,
+        "name": "Basic Attack",
         "dmg":0.1,
         "cost":0
     },
     {
         "id":1,
+        "name": "Okayish Attack",
         "dmg":0.2,
         "cost":1
     },
     {
         "id":2,
+        "name": "Strong Attack",
         "dmg":0.3,
         "cost":2
     },
     {
         "id":3,
+        "name": "Awesomely Rad Attack",
         "dmg":0.4,
         "cost":4
     }
