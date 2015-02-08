@@ -59,7 +59,7 @@ var Main = {
                                                 Main.light.position = Main.camera.position;
                                             });
 
-                BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "cadi.babylon", Main.scene, function(meshes)
+                BABYLON.SceneLoader.ImportMesh("", "public/mesh/", Main.monster.data.name+".babylon", Main.scene, function(meshes)
                                                                                                     {
                                                                                                         Monster.Init({"mesh":meshes[0]});
 
@@ -68,7 +68,7 @@ var Main = {
                 BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", Main.scene, function(meshes)
                                                                                                     {
                                                                                                         Player.Init({"mesh":Main.scene.getMeshByName("perso")});
-                                                                                                        Gui.Init();
+                                                                                                        //Gui.Init();
 
                                                                                                     });
 
@@ -79,6 +79,11 @@ var Main = {
                                                                                                     });
 
 
+
+                BABYLON.SceneLoader.Append("public/mesh/", "scene.babylon", Main.scene, function(scn)
+                                                                                        {
+                                                                                            Main.engine.hideLoadingUI();
+                                                                                        });
 
 
 
@@ -101,8 +106,8 @@ var Main = {
                                                         Main.items.data[0].qty -= Main.skills.data[0].cost;
                                                         for(var i = 0; i < Main.skills.data[0].cost; i++)
                                                         {
-                                                            Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
                                                         }
                                                         Monster.Life.Update(Main.skills.data[0].dmg);
                                                         Main.action = 1;
@@ -122,8 +127,8 @@ var Main = {
                                                         Main.items.data[0].qty -= Main.skills.data[1].cost;
                                                         for(var i = 0; i < Main.skills.data[1].cost; i++)
                                                         {
-                                                            Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
                                                         }
                                                         Monster.Life.Update(Main.skills.data[1].dmg);
                                                         Main.action = 1;
@@ -143,8 +148,8 @@ var Main = {
                                                         Main.items.data[0].qty -= Main.skills.data[2].cost;
                                                         for(var i = 0; i < Main.skills.data[2].cost; i++)
                                                         {
-                                                            Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
                                                         }
                                                         Monster.Life.Update(Main.skills.data[2].dmg);
                                                         Main.action = 1;
@@ -161,12 +166,11 @@ var Main = {
                                                     //Player.Animation();
                                                     if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[3].cost)
                                                     {
-                                                        console.log("yolo");
                                                         Main.items.data[0].qty -= Main.skills.data[3].cost;
                                                         for(var i = 0; i < Main.skills.data[3].cost; i++)
                                                         {
-                                                            Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
                                                         }
                                                         Monster.Life.Update(Main.skills.data[3].dmg);
                                                         Main.action = 1;
@@ -179,6 +183,11 @@ var Main = {
                                                 });
 
                 Main.AddEvent(document.getElementById("mg0"), "click", function()
+                                                {
+                                                        Main.action == 0 ? Main.action = 1 : Main.action = 0;
+                                                });
+
+                Main.AddEvent(document.getElementById("camera"), "click", function()
                                                 {
                                                         Main.action == 0 ? Main.action = 1 : Main.action = 0;
                                                 });
