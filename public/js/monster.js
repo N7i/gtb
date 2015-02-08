@@ -35,7 +35,7 @@ var Monster = {
                 },
         Update: function(dom)
                 {
-                    if(Main.monster.data.hp > 0)
+                    if(Main.endMatch == 0 && Main.monster.data.hp > 0)
                     {
                         if (((Math.floor(Math.random() * 100) + 0)/100) > Main.monster.data.dodge)
                         {
@@ -57,7 +57,7 @@ var Monster = {
                         setTimeout(function()
                                     {
 
-                                        //window.location="index.html?del=";//+Main.monster;
+                                        //window.location="index.html?del="+Main.monster.data.id+"&items="+Main.qtyIni;//;
                                     }, 5000);
                     }
                 },

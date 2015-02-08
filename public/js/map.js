@@ -44,6 +44,7 @@ var Map = {
                     Main.camera.keysLeft = [81]; // Touche Q
                     Main.camera.keysRight = [68]; // Touche D;
                     Main.scene.activeCamera.attachControl(Main.canvas);*/
+                    //Main.scene.activeCamera.detachControl(Main.canvas)
                     Main.camera.setTarget(new BABYLON.Vector3(25.52, 10.80, 1.06));
                 }
     },
