@@ -8,11 +8,11 @@
             0,
             1
         ],
-        "hp": "48.2",
+        "hp": "48",
         "date": "01/02/2015"
     },
     {
-        "name": "IMPUTATION DES TRANSAC",
+        "name": "RETRAIT CB DU 02-02-15",
         "img": "img/atm",
         "resistance": "0.5",
         "dodge": "0.0",
@@ -22,5 +22,17 @@
         ],
         "hp": "40",
         "date": "02/02/2015"
+    },
+    {
+        "name": "CB CARREFOURMARKET",
+        "img": "img/trolley",
+        "resistance": "0.1",
+        "dodge": "0.4",
+        "skills": [
+            0,
+            3
+        ],
+        "hp": "7",
+        "date": "03/02/2015"
     }
 ]
