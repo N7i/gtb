@@ -6,6 +6,7 @@ var Monster = {
                 Monster.GenMonster(obj.mesh);
                 Monster.Life.Init();
                 Monster.Label.Init();
+
             },
 
     GenMonster: function(mesh)
@@ -111,6 +112,69 @@ var Monster = {
         Write: function(txt)
                 {
                     Main.monster.label.Texture.drawText(txt, null, 80, "bold 40px Segoe UI", "white", "black");
+                }
+    },
+    Animation: {
+        Anim0: function(func)
+                {
+                    var animationBox0 = new BABYLON.Animation("anim0", "position.x", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox1 = new BABYLON.Animation("anim1", "rotation.x", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox2 = new BABYLON.Animation("anim2", "position.x", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+                    var posX = Main.monster.model.body.position.x;
+
+                    var keys0 = [];
+                    keys0.push({
+                        frame: 0,
+                        value: posX
+                    });
+                    keys0.push({
+                        frame: 100,
+                        value: Main.monster.model.body.position.x + 25
+                    });
+                    animationBox0.setKeys(keys0);
+                    Main.monster.model.body.animations.push(animationBox0);
+
+                    //Main.scene.beginAnimation(Main.player.model.body, 0, 100, true);
+                    var keys1 = [];
+                    keys1.push({
+                        frame: 0,
+                        value: 0
+                    });
+                    keys1.push({
+                        frame: 20,
+                        value: Math.PI/4
+                    });
+                    keys1.push({
+                        frame: 100,
+                        value: 0
+                    });
+                    animationBox1.setKeys(keys1);
+                    Main.monster.model.body.animations.push(animationBox1);
+
+                    var keys2 = [];
+                    keys2.push({
+                        frame: 0,
+                        value: Main.monster.model.body.position.x
+                    });
+                    keys2.push({
+                        frame: 100,
+                        value: posX
+                    });
+                    animationBox2.setKeys(keys2);
+                    Main.monster.model.body.animations.push(animationBox2);
+
+                    Main.scene.beginDirectAnimation(Main.monster.model.body, [animationBox0], 0, 100, false, 1, function()
+                                                                                                                {
+                                                                                                                    Main.scene.beginDirectAnimation(Main.monster.model.body, [animationBox1], 0, 100, false, 1, function()
+                                                                                                                                                                        {
+                                                                                                                                                                            Main.scene.beginDirectAnimation(Main.monster.model.body, [animationBox2], 0, 100, false, 1, function()
+                                                                                                                                                                                                                                {
+
+                                                                                                                                                                                                                                });
+                                                                                                                                                                        });
+                                                                                                                });
+                    func()
                 }
     }
 };

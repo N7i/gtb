@@ -18,8 +18,8 @@ var Player = {
                     Main.player.model.body.position.x = 18.0;
                     Main.player.model.body.position.z = 6.0;
                     Main.player.model.body.rotation.y = -(Math.PI/1.65);
-                    Main.player.model.body.material = new BABYLON.StandardMaterial("player", Main.scene);
-                    Main.player.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/spiderman.png", Main.scene);
+                    //Main.player.model.body.material = new BABYLON.StandardMaterial("player", Main.scene);
+                    //Main.player.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/spiderman.png", Main.scene);
                 },
 
     Life: {
@@ -102,11 +102,11 @@ var Player = {
             },
 
     Animation: {
-        Anim0: function()
+        Anim0: function(func)
                 {
-                    var animationBox0 = new BABYLON.Animation("anim0", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
-                    var animationBox1 = new BABYLON.Animation("anim1", "rotation.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
-                    var animationBox2 = new BABYLON.Animation("anim2", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox0 = new BABYLON.Animation("anim0", "position.x", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox1 = new BABYLON.Animation("anim1", "rotation.x", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox2 = new BABYLON.Animation("anim2", "position.x", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
                     var posX = Main.player.model.body.position.x;
 
@@ -161,6 +161,7 @@ var Player = {
                                                                                                                                                                                                                                 });
                                                                                                                                                                         });
                                                                                                                 });
+                    func()
                 }
 
     }
