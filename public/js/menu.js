@@ -27,7 +27,7 @@ var Main = {
 
         // try update default info for query string params
         try {
-            var data = JSON.parse(decodeURIComponent(location.search.substr(17)));
+            var data = JSON.parse(decodeURIComponent(location.search.substr(6)));
             var listMonsterCpy = [];
 
             $.each(Main.listeMonsters.data, function(index, monster) {
@@ -40,7 +40,25 @@ var Main = {
             Main.items.data = data.items;
             
 
-        } catch (e) {  }
+        } catch (e) {
+            try {
+                var data = JSON.parse(decodeURIComponent(location.search.substr(17)));
+                var listMonsterCpy = [];
+
+                $.each(Main.listeMonsters.data, function (index, monster) {
+                    if (monster.id != data.del) {
+                        listMonsterCpy.push(monster);
+                    }
+                });
+
+                Main.listeMonsters.data = listMonsterCpy;
+                Main.items.data = data.items;
+
+
+            } catch (e) {
+                //ignore
+            }
+        }
 
         Main.SetPlayerInfo(Main.player, Main.items, Main.skills);
         Main.SetShop(Main.items);
