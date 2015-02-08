@@ -1,25 +1,25 @@
-[
+﻿[
     {
         "id": 0,
-        "name": "Basic Attack",
+        "name": "Attack \"JeTeRembourseDemain\"",
         "dmg":0.1,
         "cost":0
     },
     {
         "id":1,
-        "name": "Okayish Attack",
+        "name": "Attack \"J'aiPasUneTune\"",
         "dmg":0.2,
         "cost":1
     },
     {
         "id":2,
-        "name": "Strong Attack",
+        "name": "Attack \"DébitDifféré\"",
         "dmg":0.3,
         "cost":2
     },
     {
         "id":3,
-        "name": "Awesomely Rad Attack",
+        "name": "Attack \"MoiPasArgentMoiMalade\"",
         "dmg":0.4,
         "cost":4
     }
