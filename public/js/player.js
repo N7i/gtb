@@ -37,7 +37,7 @@ var Player = {
                 },
         Update: function(dom)
                 {
-                    if(Main.player.data.hp >= 0)
+                    if(Main.endMatch == 0 && Main.player.data.hp >= 0)
                     {
                         Main.player.data.hp = Main.player.data.hp-dom;
                         Main.player.model.lifebar.scaling = new BABYLON.Vector3(Main.player.data.hp, 0.1, 0.1);
@@ -47,12 +47,17 @@ var Player = {
                     {
                         Monster.Label.Write("Vous êtes mort");
                         Player.Life.Dead();
+                        setTimeout(function()
+                                    {
+
+                                        //window.location="index.html??del="+Main.monster.data.id+"&items="+Main.items.data;//;
+                                    }, 5000);
                     }
                 },
 
         Dead: function()
                 {
-                    if (Main.endMatch == 0)
+                    if (Main.endMatch == 0 && Main.player.data.hp > 0)
                     {
                         var pos = Main.player.model.body.position;
                         Main.player.model.body.dispose();
@@ -66,8 +71,8 @@ var Player = {
                         Main.cross.checkCollisions = true;
                         Main.cross.setPhysicsState(BABYLON.PhysicsEngine.BoxImpostor, { mass: 1 });
                         Main.endMatch = 1;
-                    }
 
+                    }
                 }
     },
 

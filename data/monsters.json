@@ -1,5 +1,6 @@
 {
     "name": "cheques",
+    "id":"0",
     "hp": 1,
     "resistance":0.3,
     "dodge":0.3,

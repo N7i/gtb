@@ -40,6 +40,7 @@ var Main = {
     endMatch:0,
     cross:{},
     cross2:{},
+    qtyIni:0,
 
     Init: function ()
             {
@@ -48,6 +49,7 @@ var Main = {
                 Main.monster.data = Main.GetMyJson("monsters");
                 Main.skills.data = Main.GetMyJson("skills");
                 Main.items.data = Main.GetMyJson("items");
+                Main.qtyIni = Main.items.data.qty;
                 Main.engine = new BABYLON.Engine(Main.canvas, true);
                 Main.scene = new BABYLON.Scene(Main.engine);
                 Main.scene.enablePhysics(null, new BABYLON.OimoJSPlugin());
