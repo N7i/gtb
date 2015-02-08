@@ -99,6 +99,7 @@ var Monster = {
                     Main.monster.label.Texture = new BABYLON.DynamicTexture("dynamic texture", 512, Main.scene, true);
                     Main.monster.label.Plan.material.diffuseTexture = Main.monster.label.Texture;
                     Main.monster.label.Plan.material.specularColor = new BABYLON.Color3(0, 0, 0);
+                    Main.monster.label.Plan.material.specularPower = 100000;
                     Main.monster.label.Plan.material.backFaceCulling = false;
                     Monster.Label.Write("yoloaaaaaaaaaaaaaaaaaaa");
                 },
