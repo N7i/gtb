@@ -9,7 +9,7 @@ body, html
 
 #main
 {
-    width:80%;
+    width:65%;
     margin-left:auto;
     margin-right:auto;
 }
@@ -21,21 +21,284 @@ body, html
 
 #monsterList {
 
-    background-color: gray;
     margin-top: 20px;
     padding: 30px;
+    background-image: url('/public/img/opacity.png');
+    -webkit-box-shadow: 0 9px 6px -6px;
+    border-radius: 6px 6px 1px 1px;
 }
 
 #monsterList .raw-container {
-    background-color: green;
     padding: 15px;
     padding-top: 1px;
+    -webkit-box-shadow: inset 0px 1px 7px #000000;
+    border-radius: 5px 5px 0px 0px;
+    background-image: url('/public/img/opacity.png');
+
 }
 
 #monsterList .row {
-    background-color: red;
     margin-top: 20px;
     margin-right: 0px;
     margin-left: 0px; 
     padding: 5px;
+    min-height: 110px;
+    min-width: 435px;
+}
+
+
+
+/**  TRIDIV BUTTON TEST **/
+
+.tridiv {
+  perspective: 800px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+  font-size: 100%;
+
+   
+}
+.face {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+.scene, .shape, .face, .face-wrapper, .cr {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+.scene {
+  width: 80em;
+  height: 80em;
+  top: 50%;
+  left: 50%;
+  margin: -40em 0 0 -40em;
+
+  /*  Transition all */
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.tridiv.state-hidden .scene {
+    -webkit-transform:rotateX(180deg) rotateY(720deg) !important;
+    -moz-transform:rotateX(180deg) rotateY(720deg) !important;
+    -ms-transform:rotateX(180deg) rotateY(720deg) !important;
+   transform:rotateX(180deg) rotateY(720deg) !important; 
+}
+
+.tridiv.state-pre-hidden .cyl-1 .side {
+    width: 5em;
+}
+
+.tridiv.state-hidden .cub-2 {
+    transform: translate3D(2.6875em, -0.0625em, 0em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.shape {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 50%;
+}
+.face, .face-wrapper {
+  overflow: hidden;
+  transform-origin: 0 0;
+  backface-visibility: hidden;
+  /* hidden by default, prevent blinking and other weird rendering glitchs */
+}
+.face {
+  background-size: 100% 100%!important;
+  background-position: center;
+}
+.face-wrapper .face {
+  left: 100%;
+  width: 100%;
+  height: 100%
+}
+.photon-shader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%
+}
+.side {
+  left: 50%;
+   /*  Transition all */
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.cr, .cr .side {
+  height: 100%;
+}
+[class*="cylinder"] .tp {
+  transform: rotateX(90deg) translateY(-50%);
+}
+[class*="cylinder"] .bm {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+[class*="cylinder"] .tp, [class*="cylinder"] .bm, [class*="cylinder"] .tp .photon-shader, [class*="cylinder"] .bm .photon-shader {
+  border-radius: 50%;
+}
+[class*="cylinder"] .bm {
+  top: 100%;
+}
+[class*="cuboid"] .ft, [class*="cuboid"] .bk {
+  width: 100%;
+  height: 100%;
+}
+[class*="cuboid"] .bk {
+  left: 100%;
+}
+[class*="cuboid"] .rt {
+  transform: rotateY(-90deg) translateX(-50%);
+}
+[class*="cuboid"] .lt {
+  transform: rotateY(90deg) translateX(-50%);
+}
+[class*="cuboid"] .tp {
+  transform: rotateX(90deg) translateY(-50%);
+}
+[class*="cuboid"] .bm {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+[class*="cuboid"] .lt {
+  left: 100%;
+}
+[class*="cuboid"] .bm {
+  top: 100%;
+}
+/* .cyl-1 styles */
+.cyl-1 {
+  transform:translate3D(0em, 0em, -0.5em) rotateX(-270deg) rotateY(-180deg) rotateZ(90deg);
+  opacity:1;
+  width:6em;
+  height:23em;
+  margin:-11.5em 0 0 -3em;
+}
+.cyl-1 .tp, .cyl-1 .bm {
+  width:6em;
+  height:6em;
+}
+.cyl-1 .side {
+  width:1.3944608463408996em;
+  height:23em;
+}
+.cyl-1 .s0 {
+  transform: rotateY(12.857142857142858deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s1 {
+  transform: rotateY(38.57142857142857deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s2 {
+  transform: rotateY(64.28571428571429deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s3 {
+  transform: rotateY(90deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s4 {
+  transform: rotateY(115.71428571428572deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s5 {
+  transform: rotateY(141.42857142857144deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s6 {
+  transform: rotateY(167.14285714285714deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s7 {
+  transform: rotateY(192.85714285714286deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s8 {
+  transform: rotateY(218.57142857142858deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s9 {
+  transform: rotateY(244.2857142857143deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s10 {
+  transform: rotateY(270deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s11 {
+  transform: rotateY(295.7142857142857deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s12 {
+  transform: rotateY(321.4285714285714deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .s13 {
+  transform: rotateY(347.1428571428571deg) translate3D(-50%, 0, 2.975em);
+}
+.cyl-1 .face, .cyl-1 .side {
+  background-color:#FFFFFF;
+
+}
+/* .cub-1 styles */
+.cub-1 {
+  transform:translate3D(-8.3125em, 0em, 1.5625em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  opacity:1;
+  width:4.625em;
+  height:5em;
+  margin:-2.5em 0 0 -2.3125em;
+}
+.cub-1 .ft {
+  transform:translateZ(1.5em);
+  border-radius: 5px;
+}
+.cub-1 .bk {
+  transform:translateZ(-1.5em) rotateY(180deg);
+  border-radius: 5px;
+}
+.cub-1 .rt, .cub-1 .lt {
+  width:3em;
+  height:5em;
+  border-radius: 5px;
+}
+.cub-1 .tp, .cub-1 .bm {
+  width:4.625em;
+  height:3em;
+  border-radius: 5px;
+}
+.cub-1 .face {
+  background-color:#FFFFFF;
+  border-radius: 5px;
+}
+
+.cub-2 {
+  /*  Transition all */
+  -webkit-transition: all 1.4s ease-in-out;
+  -moz-transition: all 1.4s ease-in-out;
+  -o-transition: all 1.4s ease-in-out;
+  transition: all 1.4s ease-in-out;
+
+  transform:translate3D(2.6875em, -0.0625em, 1.5625em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  opacity:1;
+  width:15.375em;
+  height:3.875em;
+  margin:-1.9375em 0 0 -7.6875em;
+}
+.cub-2 .ft {
+  transform:translateZ(1.5em);
+  border-radius: 5px;
+}
+.cub-2 .bk {
+  transform:translateZ(-1.5em) rotateY(180deg);
+  border-radius: 5px;
+}
+.cub-2 .rt, .cub-2 .lt {
+  width:3em;
+  height:3.875em;
+  border-radius: 5px;
+}
+.cub-2 .tp, .cub-2 .bm {
+  width:15.375em;
+  height:3em;
+  border-radius: 5px;
+}
+.cub-2 .face {
+  background-color:#FFFFFF;
+  border-radius: 5px;
 }
