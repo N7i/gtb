@@ -106,13 +106,14 @@ var Main = {
 													//Player.Animation();
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[0].cost && Main.endMatch == 0)
 													{
+                                                        Player.Animation.Anim0();
 														Monster.Life.Update(Main.skills.data[0].dmg);
 														Main.action = 1;
 														setTimeout(function()
 																	{
 																		Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
 																		Main.action = 0;
-																	}, 3000);
+																	}, 5000);
 													}
 													/*
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[0].cost)
@@ -138,6 +139,7 @@ var Main = {
 													//Player.Animation();
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[1].cost && Main.endMatch == 0)
 													{
+                                                        Player.Animation.Anim0();
 														Main.UpdatePlayerEnergy(Main.skills.data[1].cost);
 														Monster.Life.Update(Main.skills.data[1].dmg);
 														Main.action = 1;
@@ -145,7 +147,7 @@ var Main = {
 																	{
 																		Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
 																		Main.action = 0;
-																	}, 3000);
+																	}, 5000);
 													}
 													/*if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[1].cost)
 													{
@@ -170,6 +172,7 @@ var Main = {
 													//Player.Animation();
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[2].cost && Main.endMatch == 0)
 													{
+                                                        Player.Animation.Anim0();
 														Main.UpdatePlayerEnergy(Main.skills.data[2].cost);
 														Monster.Life.Update(Main.skills.data[2].dmg);
 														Main.action = 1;
@@ -177,7 +180,7 @@ var Main = {
 																	{
 																		Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
 																		Main.action = 0;
-																	}, 3000);
+																	}, 5000);
 													}
 													/*
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[2].cost)
@@ -203,6 +206,7 @@ var Main = {
 													//Player.Animation();
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[3].cost && Main.endMatch == 0)
 													{
+                                                        Player.Animation.Anim0();
 														Main.UpdatePlayerEnergy(Main.skills.data[3].cost);
 														Monster.Life.Update(Main.skills.data[3].dmg);
 														Main.action = 1;
@@ -210,7 +214,7 @@ var Main = {
 																	{
 																		Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
 																		Main.action = 0;
-																	}, 3000);
+																	}, 5000);
 													}
 												});
 													/*
