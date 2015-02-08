@@ -8,12 +8,22 @@
     </head>
     <body>
         <canvas id="renderCanvas"></canvas>
-        <div id="skill0" class="btn btn-default">hit player</div>
-        <div id="skill1" class="btn btn-default">hit monster - 1</div>
-        <div id="skill2" class="btn btn-default">hit monster - 2</div>
-        <div id="skill3" class="btn btn-default">hit monster - 3</div>
-        <div id="skill4" class="btn btn-default">hit monster - 4</div>
-        <div id="mg0" class="btn btn-default">start / stop attack</div>
+        <div class="row">
+            <div class="col-sm-8" style="background-color: red;">
+                <div id="skill0" class="btn btn-default">hit player</div>
+                <div id="skill1" class="btn btn-default">hit monster - 1</div>
+                <div id="skill2" class="btn btn-default">hit monster - 2</div>
+                <div id="skill3" class="btn btn-default">hit monster - 3</div>
+                <div id="skill4" class="btn btn-default">hit monster - 4</div>
+                <div id="mg0" class="btn btn-default">start / stop attack</div>
+            </div>
+            <div class="col-sm-4 supplies-container" style="background-color: green;">
+                <div id="skill3" class="btn btn-default">hit monster - 3</div>
+            </div>
+            
+        </div>
+        
+        <script src="public/js/jquery.min.js"></script>
         <script src="public/js/lib/babylon.2.0-beta.debug.js"></script>
         <script src="public/js/lib/Oimo.js"></script>
         <script src="public/js/lib/hand-1.3.8.js"></script>

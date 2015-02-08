@@ -18,3 +18,25 @@ canvas
     margin-left:auto;
     margin-right:auto;
 }
+
+.supplie {
+
+    border: 1px solid black;
+    width: 30px;
+    height: 30px !important;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.supplie-energy {
+   background-image: url('/public/img/energy.png');
+   background-size: cover;
+background-position: -8px;
+}
+
+.supplie-potion {
+    background-image: url('/public/img/potion.png');
+   background-size: cover;
+background-position: 1px -2px;
+}
