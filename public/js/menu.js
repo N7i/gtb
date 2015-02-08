@@ -35,30 +35,26 @@ var Main = {
             var canvas = document.getElementById("menu-monster-canvas-" + index),
                 scene = null,
                 engine = null,
-                camera = null;
+                camera = null,
+                light = null;
 
+            
             engine = new BABYLON.Engine(canvas, true);
             scene = new BABYLON.Scene(engine);
-
-            switch (index) {
-                case 0:
-                    break;
-                case 1:
-
-                    break;
-                case 2:
-
-                    break;
-            }
-
-            camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -3), scene);
-
+            
+            camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -10), scene);
             camera.checkCollisions = true;
             camera.setTarget(new BABYLON.Vector3.Zero());
 
+            light = new BABYLON.PointLight("DirLight", new BABYLON.Vector3(0, 10, 0), scene);
+            light.diffuse = new BABYLON.Color3(1, 1, 1);
+            //Main.light.specular = new BABYLON.Color3(0.6, 0.6, 0.6);
+            light.specular = new BABYLON.Color3(0, 0, 0);
+            light.intensity = 1.5;
+
             engine.runRenderLoop(function () {
                 scene.render();
-                Main.light.position = camera.position;
+                light.position = camera.position;
             });
 
             BABYLON.SceneLoader.ImportMesh("", "public/mesh/", monster.img+".babylon", scene, function (meshes) {
