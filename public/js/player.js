@@ -5,6 +5,7 @@ var Player = {
             {
                 Player.GenPlayer(obj.mesh);
                 Player.Life.Init();
+
             },
 
     GenPlayer: function(mesh)
@@ -100,33 +101,67 @@ var Player = {
                     }
             },
 
-    Animation: function()
+    Animation: {
+        Anim0: function()
                 {
-                    //var animationBox = new BABYLON.Animation("myAnimation", "scaling.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
-                    var animationBox = new BABYLON.Animation("myAnimation", "scaling.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, "");
+                    var animationBox0 = new BABYLON.Animation("anim0", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox1 = new BABYLON.Animation("anim1", "rotation.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                    var animationBox2 = new BABYLON.Animation("anim2", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
-                    // An array with all animation keys
-                    var keys = [];
+                    var posX = Main.player.model.body.position.x;
 
-                   //At the animation key 0, the value of scaling is "1"
-                    keys.push({
+                    var keys0 = [];
+                    keys0.push({
                         frame: 0,
-                        value: 1
+                        value: posX
                     });
-
-                    //At the animation key 20, the value of scaling is "0.2"
-                    keys.push({
-                        frame: 20,
-                        value: 0.2
-                    });
-
-                    //At the animation key 100, the value of scaling is "1"
-                    keys.push({
+                    keys0.push({
                         frame: 100,
-                        value: 1
+                        value: Main.monster.model.body.position.x + 8
                     });
-                    animationBox.setKeys(keys);
-                    Main.player.model.body.animations.push(animationBox);
-                    Main.scene.beginAnimation(Main.player.model.body, 0, 100, true);
+                    animationBox0.setKeys(keys0);
+                    Main.player.model.body.animations.push(animationBox0);
+
+                    //Main.scene.beginAnimation(Main.player.model.body, 0, 100, true);
+                    var keys1 = [];
+                    keys1.push({
+                        frame: 0,
+                        value: 0
+                    });
+                    keys1.push({
+                        frame: 20,
+                        value: Math.PI/4
+                    });
+                    keys1.push({
+                        frame: 100,
+                        value: 0
+                    });
+                    animationBox1.setKeys(keys1);
+                    Main.player.model.body.animations.push(animationBox1);
+
+                    var keys2 = [];
+                    keys2.push({
+                        frame: 0,
+                        value: Main.monster.model.body.position.x
+                    });
+                    keys2.push({
+                        frame: 100,
+                        value: posX
+                    });
+                    animationBox2.setKeys(keys2);
+                    Main.player.model.body.animations.push(animationBox2);
+
+                    Main.scene.beginDirectAnimation(Main.player.model.body, [animationBox0], 0, 100, false, 1, function()
+                                                                                                                {
+                                                                                                                    Main.scene.beginDirectAnimation(Main.player.model.body, [animationBox1], 0, 100, false, 1, function()
+                                                                                                                                                                        {
+                                                                                                                                                                            Main.scene.beginDirectAnimation(Main.player.model.body, [animationBox2], 0, 100, false, 1, function()
+                                                                                                                                                                                                                                {
+
+                                                                                                                                                                                                                                });
+                                                                                                                                                                        });
+                                                                                                                });
                 }
+
+    }
 };
