@@ -106,11 +106,10 @@ var Main = {
                camera = null,
                light = null;
 
-
             engine = new BABYLON.Engine(canvas, true);
             scene = new BABYLON.Scene(engine);
 
-            camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -10), scene);
+            camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(-3, 0, -3), scene);
             camera.checkCollisions = true;
             camera.setTarget(new BABYLON.Vector3.Zero());
 
@@ -127,10 +126,10 @@ var Main = {
 
             BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", scene, function (meshes) {
                 var mesh = meshes[0];
-                mesh.position.y -= 3;
+                mesh.position.y -= 2.5;
                 Main.CreateLoopRotateAnimationForScene(scene, mesh);
             });
-        });
+        })();
 
         //Main.camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -3), Main.scene);
         //Main.camera.checkCollisions = true;
