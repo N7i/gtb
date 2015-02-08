@@ -10,12 +10,12 @@ var Player = {
     GenPlayer: function(mesh)
                 {
                     Main.player.model.body = mesh;
-                    Main.player.model.body.scaling = new BABYLON.Vector3(4, 4, 4);
+                    Main.player.model.body.scaling = new BABYLON.Vector3(3, 3, 3);
                    // Main.player = BABYLON.Mesh.CreateBox("player", 2, Main.scene);
                     //Main.player = BABYLON.Mesh.
                     Main.player.model.body.position.y = 3.0;
                     Main.player.model.body.position.x = 15.0;
-                    Main.player.model.body.position.z = 10.0;
+                    Main.player.model.body.position.z = 8.0;
                     Main.player.model.body.rotation.y = -(Math.PI/1.5);
                     Main.player.model.body.material = new BABYLON.StandardMaterial("player", Main.scene);
                     Main.player.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/spiderman.png", Main.scene);
@@ -27,7 +27,7 @@ var Player = {
                     Main.player.model.lifebar = BABYLON.Mesh.CreateBox("playerlife", 2, Main.scene);
                     Main.player.model.lifebar.scaling = new BABYLON.Vector3(1, 0.2, 0.2);
                     Main.player.model.lifebar.parent = Main.player.model.body;
-                    Main.player.model.lifebar.position.y = 3.0;
+                    Main.player.model.lifebar.position.y = 1.5;
                     //.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
                     Main.player.model.lifebar.material = new BABYLON.StandardMaterial("texture1", Main.scene);
                     Main.player.model.lifebar.material.diffuseColor = new BABYLON.Color3(0, 1, 0);

@@ -1,7 +1,13 @@
 ﻿"use strict";
 
 var Main = {
+    engine: {},
+    scene: {},
+    light: {},
+    ground: {},
+    camera: {},
     xhr: {},
+    canvas: {},
     json: {}, // récupére des objets json
     menu: {}, // objet json menu
     player: {},
@@ -17,10 +23,51 @@ var Main = {
         Main.items.data = Main.GetMyJson("items");
         Main.monsters.data = Main.GetMyJson("monsters");
         Main.listeMonsters.data = Main.GetMyJson("listeMonsters");
+
+
         Main.SetPlayerInfo(Main.player, Main.items, Main.skills);
         Main.SetShop(Main.items);
 
         Main.drawMenu(Main.listeMonsters.data);
+
+        $.each(Main.listeMonsters.data, function (index, monster) {
+
+            var canvas = document.getElementById("menu-monster-canvas-" + index),
+                scene = null,
+                engine = null,
+                camera = null;
+
+            engine = new BABYLON.Engine(canvas, true);
+            scene = new BABYLON.Scene(engine);
+            camera = new BABYLON.FreeCamera("MainCamera"+index, new BABYLON.Vector3(0, 0, -3), scene);
+
+            camera.checkCollisions = true;
+            camera.setTarget(new BABYLON.Vector3.Zero());
+
+            engine.runRenderLoop(function () {
+                scene.render();
+                Main.light.position = camera.position;
+            });
+
+            BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", scene, function (meshes) {
+                var mesh = scene.getMeshByName("perso");
+                mesh.position.y -= 3;
+                Main.CreateLoopRotateAnimationForScene(scene, mesh);
+            });
+        });
+
+        
+
+        //Main.camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -3), Main.scene);
+        //Main.camera.checkCollisions = true;
+        ////Main.scene.activeCamera.attachControl(Main.canvas);
+        //Main.camera.setTarget(new BABYLON.Vector3.Zero());
+
+        //Main.engine.runRenderLoop(function () {
+        //    Main.scene.render();
+        //    Main.light.position = Main.camera.position;
+        //});
+        
 
     },
 
@@ -92,7 +139,10 @@ var Main = {
                     </div>
                     <div class="shape cuboid-1 cub-1">
                         <div class="face ft">
-                            <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div>
+                            <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);">
+                            
+                              <canvas id="menu-monster-canvas-'+index+'" class="menu-monster-preview"></canvas> 
+                            </div>
                         </div>
                         <div class="face bk">
                             <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div>
@@ -150,7 +200,7 @@ var Main = {
         **/
 
         $.each(monsters, function (index, monster) {
-            $('#monsterList .raw-container').append('<div class="row"> <div class="tridiv state-hidden state-pre-hidden"> <div class="scene" style="-webkit-transform:rotateX(1deg) rotateY(720deg); -moz-transform:rotateX(1deg) rotateY(720deg); -ms-transform:rotateX(1deg) rotateY(720deg); transform:rotateX(1deg) rotateY(720deg); "> <div class="shape cylinder-1 cyl-1"> <div class="face bm"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face tp"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s0"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s1"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s2"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s3"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s4"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s5"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s6"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s7"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s8"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s9"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s10"> <span style="-webkit-transform: rotate(90deg); display: block; -webkit-transform-origin: 0px 52px 5px; width: 250px; font-size: 2em;"> NEW MONSTER</span> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.14902);"></div> </div> <div class="face side s11"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s12"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0);"></div> </div> <div class="face side s13"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> </div> <div class="shape cuboid-1 cub-1"> <div class="face ft"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face bk"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face rt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face lt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face bm"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face tp"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> </div> <div class="shape cuboid-2 cub-2"> <div class="face ft"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"> <span class="menu-monster-name"> ' + monster.name + ' <span class="menu-monster-stats"> <span class="menu-monster-stats-hp glyphicon glyphicon glyphicon-heart" aria-hidden="true">' + monster.hp + ' </span> <span class="menu-monster-stats-resistance glyphicon glyphicon glyphicon-modal-window" aria-hidden="true">' + monster.resistance + ' </span> </span> </span> </div> </div> <div class="face bk"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face rt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face lt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face bm"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face tp"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> </div> </div> </div> </div>');
+            $('#monsterList .raw-container').append('<div class="row"> <div class="tridiv state-hidden state-pre-hidden"> <div class="scene" style="-webkit-transform:rotateX(1deg) rotateY(720deg); -moz-transform:rotateX(1deg) rotateY(720deg); -ms-transform:rotateX(1deg) rotateY(720deg); transform:rotateX(1deg) rotateY(720deg); "> <div class="shape cylinder-1 cyl-1"> <div class="face bm"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face tp"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s0"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s1"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s2"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s3"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s4"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s5"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s6"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s7"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s8"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0);"></div> </div> <div class="face side s9"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s10"> <span style="-webkit-transform: rotate(90deg); display: block; -webkit-transform-origin: 0px 52px 5px; width: 250px; font-size: 2em;"> NEW MONSTER</span> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.14902);"></div> </div> <div class="face side s11"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> <div class="face side s12"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0);"></div> </div> <div class="face side s13"> <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0505882);"></div> </div> </div> <div class="shape cuboid-1 cub-1"> <div class="face ft"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"> <canvas id="menu-monster-canvas-' + index + '" class="menu-monster-preview"></canvas> </div> </div> <div class="face bk"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face rt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face lt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face bm"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> <div class="face tp"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.14902);"></div> </div> </div> <div class="shape cuboid-2 cub-2"> <div class="face ft"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"> <span class="menu-monster-name"> ' + monster.name + ' <span class="menu-monster-stats"> <span class="menu-monster-stats-hp glyphicon glyphicon glyphicon-heart" aria-hidden="true">' + monster.hp + ' </span> <span class="menu-monster-stats-resistance glyphicon glyphicon glyphicon-modal-window" aria-hidden="true">' + monster.resistance + ' </span> </span> </span> </div> </div> <div class="face bk"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face rt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face lt"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face bm"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> <div class="face tp"> <div class="photon-shader" style="background-color: rgba(255, 255, 255, 0.113725);"></div> </div> </div> </div> </div> </div>');
         });
 
         $('.tridiv').click(function () {
@@ -165,6 +215,22 @@ var Main = {
             else {
                 // TODO start something mother fucker :D
             }
+        });
+    },
+
+    CreateLoopRotateAnimationForScene: function(scene, mesh) {
+        var time = 0;
+        scene.registerBeforeRender(function () {
+            time += 0.03;
+            mesh.rotation.y = time;
+        });
+    },
+
+    CreateAnimation: function (mesh) {
+        var time = 0;
+        Main.scene.registerBeforeRender(function () {
+            time += 0.03;
+            mesh.rotation.y = time;
         });
     },
 
