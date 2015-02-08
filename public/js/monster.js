@@ -94,19 +94,13 @@ var Monster = {
     Label:{
         Init: function()
                 {
-                    Main.monster.label.Plan = BABYLON.Mesh.CreatePlane("label", 80, Main.scene, false);
+                    Main.monster.label.Plan = Main.scene.getMeshByName("tableauScore");
                     Main.monster.label.Plan.material = new BABYLON.StandardMaterial("background", Main.scene);
-                    Main.monster.label.Plan.scaling.z = 0.3;
-                    Main.monster.label.Plan.scaling.x = 0.8;
-                    Main.monster.label.Plan.scaling.y = 0.4;
-                    Main.monster.label.Plan.position.z = -60;
-                    Main.monster.label.Plan.position.y = 20;
-                    Main.monster.label.Plan.position.x = -65;
-                    Main.monster.label.Plan.rotation.y = -2.3;
-                    Main.monster.label.Texture = new BABYLON.DynamicTexture("dynamic texture", 600, Main.scene, true);
+                    Main.monster.label.Texture = new BABYLON.DynamicTexture("dynamic texture", 512, Main.scene, true);
                     Main.monster.label.Plan.material.diffuseTexture = Main.monster.label.Texture;
                     Main.monster.label.Plan.material.specularColor = new BABYLON.Color3(0, 0, 0);
                     Main.monster.label.Plan.material.backFaceCulling = false;
+                    Monster.Label.Write("yoloaaaaaaaaaaaaaaaaaaa");
                 },
 
         Write: function(txt)
