@@ -374,6 +374,10 @@ var Main = {
             $('.btn-' + i).click(function () {
                 var idx = $(this).data('idx');
 
+                if (Main.items.data[idx].qty == 99) {
+                    return;
+                }
+
                 Main.AddItem(idx);
                 Main.clocks[idx].setTime(Main.items.data[idx].qty);
             });
