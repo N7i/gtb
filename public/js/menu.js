@@ -282,7 +282,7 @@ var Main = {
     SetShop: function (items) {
         var container = $("#shopBox .shop-container .raw-container");
         var shopBox = container[0];
-        shopBox.innerHTML = "<h2>Shop</h2>";
+        shopBox.innerHTML = "<h2 class=\"green\">Shop</h2>";
         for (var i = 0; i < items.data.length; i++)
         {
             var shopBox = '';

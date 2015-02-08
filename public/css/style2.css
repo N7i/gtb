@@ -105,6 +105,13 @@ body, html
     padding: 0;
 }
 
+#shopBox h2 {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+}
+
 #shopBox .shop-container {
     background-image: url('/public/img/opacity.png');
     -webkit-box-shadow: 0 9px 6px -6px;

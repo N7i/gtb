@@ -263,7 +263,7 @@ var Main = {
 		catch(e)
 		{
 			console.log('PATSER FAILed');
-			Main.xhr.open("GET", 'data/monster.json', false);
+			Main.xhr.open("GET", 'data/monsters.json', false);
 			Main.xhr.send(null);
 			return JSON.parse(Main.xhr.responseText);
 		}
