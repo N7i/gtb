@@ -8,8 +8,14 @@ body, html
 {
     margin: 0;
     padding: 0;
-    background-image: url('/public/img/background.jpg');
     background-position: center;
+}
+
+body {
+    background-image: url('/public/img/background.jpg');
+    background-size: cover;
+    margin-bottom: 15px;
+    background-repeat: no-repeat;
 }
 
 body, button, img, p, a, ul, li, * {
