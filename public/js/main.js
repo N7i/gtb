@@ -138,6 +138,7 @@ var Main = {
 													//Player.Animation();
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[1].cost && Main.endMatch == 0)
 													{
+														Main.UpdatePlayerEnergy(Main.skills.data[1].cost);
 														Monster.Life.Update(Main.skills.data[1].dmg);
 														Main.action = 1;
 														setTimeout(function()
@@ -169,6 +170,7 @@ var Main = {
 													//Player.Animation();
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[2].cost && Main.endMatch == 0)
 													{
+														Main.UpdatePlayerEnergy(Main.skills.data[2].cost);
 														Monster.Life.Update(Main.skills.data[2].dmg);
 														Main.action = 1;
 														setTimeout(function()
@@ -201,6 +203,7 @@ var Main = {
 													//Player.Animation();
 													if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[3].cost && Main.endMatch == 0)
 													{
+														Main.UpdatePlayerEnergy(Main.skills.data[3].cost);
 														Monster.Life.Update(Main.skills.data[3].dmg);
 														Main.action = 1;
 														setTimeout(function()
@@ -267,6 +270,24 @@ var Main = {
 			Main.xhr.send(null);
 			return JSON.parse(Main.xhr.responseText);
 		}
+	},
+
+	UpdatePlayerEnergy: function(cost) {
+		Main.items.data[0].qty -= cost;
+		var qty = Main.items.data[0].qty;
+
+		if (qty < 4) {
+			$('#skill4').addClass('disabled');
+		}
+
+		if (qty < 2) {
+			$('#skill3').addClass('disabled');
+		}
+
+		if (qty < 1) {
+			$('#skill2').addClass('disabled');
+		}
+	   
 	},
 	
 	GetSuppliesJSON : function() {

@@ -64,7 +64,7 @@ var Monster = {
 
         Dead: function()
                 {
-                    if (Main.endMatch == 0)
+            if (Main.endMatch == 0 && Main.monster.data.hp <= 0)
                     {
 
                         var pos = Main.monster.model.body.position;

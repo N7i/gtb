@@ -56,8 +56,8 @@ var Player = {
                 },
 
         Dead: function()
-                {
-                    if (Main.endMatch == 0 && Main.player.data.hp > 0)
+        {
+                    if (Main.endMatch == 0 && Main.player.data.hp <= 0)
                     {
                         var pos = Main.player.model.body.position;
                         Main.player.model.body.dispose();
