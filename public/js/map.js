@@ -56,7 +56,7 @@ var Map = {
 				//Main.light.specular = new BABYLON.Color3(0.6, 0.6, 0.6);
 				Main.light.specular = new BABYLON.Color3(0, 0, 0);
 				Main.light.intensity = 1.5;
-                Main.light.position.z = -60;
+                Main.light.position.z = 20;
 			},
 
 	 Ground: function()

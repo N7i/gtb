@@ -9,7 +9,8 @@ var Main = {
 	player: {
 		"model":{
 			"body": {},
-			"lifebar":{}
+			"lifebar":{},
+            "timebar":{}
 		},
 		"data":{},
 		"action":{}
@@ -41,6 +42,7 @@ var Main = {
 	cross:{},
 	cross2:{},
 	qtyIni:0,
+
 
 	Init: function ()
 			{
@@ -86,6 +88,7 @@ var Main = {
 				BABYLON.SceneLoader.Append("public/mesh/", "scene.babylon", Main.scene, function(scn)
 																						{
 																							Main.engine.hideLoadingUI();
+                                                                                            Monster.Label.Init();
 																						});
 
 
@@ -272,13 +275,49 @@ var Main = {
 														Main.action == 0 ? Main.action = 1 : Main.action = 0;
 												});*/
 
-				window.setInterval(function()
+				window.setInterval((function()
 									{
-										if (Main.action != 1)
-										{
-											Player.Life.Update(0.1);
-										}
-									}, 10000);
+                                        var counter = 0;
+                                        var lastAction = 0;
+                                        return function() {
+                                            if (Main.action != lastAction){
+                                                counter = 0;
+                                                return;
+                                            }
+
+
+
+                                            if (Main.action == 1) {
+                                                if (counter === 10) {
+                                                   Main.action = 0;
+                                                    counter = 0;
+                                                }
+                                                else {
+                                                    Player.Timer.Update(counter);
+                                                }
+                                            }
+                                            else if (Main.action == 0) {
+                                                if (counter === 10) {
+                                                    Monster.Animation.Anim0(function() {
+                                                        Player.Life.Update(0.1);
+                                                        counter= 0;
+                                                    });
+
+                                                }
+                                                else {
+                                                    Player.Timer.Update(counter);
+                                                }
+                                            }
+
+                                            counter++;
+                                        };
+									})(), 1000);
+
+                /*window.setInterval(function()
+									{
+
+
+									}, 10000);*/
 			},
 
 	GetMyJson : function(name)

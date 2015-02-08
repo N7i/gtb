@@ -5,6 +5,7 @@ var Player = {
             {
                 Player.GenPlayer(obj.mesh);
                 Player.Life.Init();
+                Player.Timer.Init();
 
             },
 
@@ -21,6 +22,25 @@ var Player = {
                     //Main.player.model.body.material = new BABYLON.StandardMaterial("player", Main.scene);
                     //Main.player.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/spiderman.png", Main.scene);
                 },
+    Timer: {
+        Init: function()
+                {
+                    Main.player.model.timebar = BABYLON.Mesh.CreateBox("playertime", 2, Main.scene);
+                    Main.player.model.timebar.scaling = new BABYLON.Vector3(1, 0.05, 0.05);
+                    Main.player.model.timebar.parent = Main.player.model.body;
+                    Main.player.model.timebar.position.y = 2.8;
+                    Main.player.model.timebar.position.x = 2.0;
+                    Main.player.model.timebar.rotation.y = -2.5;
+                    //.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
+                    Main.player.model.timebar.material = new BABYLON.StandardMaterial("texture1", Main.scene);
+                    Main.player.model.timebar.material.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+                },
+        Update: function(progress)
+                {
+                    Main.player.model.timebar.scaling = new BABYLON.Vector3((10 - progress) / 10, 0.05, 0.05);
+                    Main.player.model.timebar.material.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+                }
+    },
 
     Life: {
         Init: function()

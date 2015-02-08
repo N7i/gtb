@@ -5,7 +5,6 @@ var Monster = {
             {
                 Monster.GenMonster(obj.mesh);
                 Monster.Life.Init();
-                Monster.Label.Init();
 
             },
 
@@ -101,12 +100,12 @@ var Monster = {
                     Main.monster.label.Plan.material.specularColor = new BABYLON.Color3(0, 0, 0);
                     Main.monster.label.Plan.material.specularPower = 100000;
                     Main.monster.label.Plan.material.backFaceCulling = false;
-                    Monster.Label.Write("yoloaaaaaaaaaaaaaaaaaaa");
+                    Monster.Label.Write("YOLO");
                 },
 
         Write: function(txt)
                 {
-                    Main.monster.label.Texture.drawText(txt, null, 80, "bold 40px Segoe UI", "white", "black");
+                    Main.monster.label.Texture.drawText(txt, null, 80, "bold 20px Segoe UI", "white", "black");
                 }
     },
     Animation: {
