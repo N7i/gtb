@@ -46,9 +46,9 @@ var Main = {
 			{
 				Main.xhr = Main.Xhttpr();
 				Main.player.data = Main.GetMyJson("player");
-				Main.monster.data = Main.GetMyJson("monsters");
+				Main.monster.data = Main.GetMonsterJSON();
 				Main.skills.data = Main.GetMyJson("skills");
-				Main.items.data = Main.GetMyJson("items");
+				Main.items.data = Main.	GetSuppliesJSON();
 				Main.qtyIni = Main.items.data.qty;
 				Main.engine = new BABYLON.Engine(Main.canvas, true);
 				Main.scene = new BABYLON.Scene(Main.engine);
@@ -249,11 +249,38 @@ var Main = {
 			},
 
 	GetMyJson : function(name)
-				{
-					Main.xhr.open("GET", 'data/'+name+'.json', false);
-					Main.xhr.send(null);
-					return JSON.parse(Main.xhr.responseText);
-				},
+	{
+			Main.xhr.open("GET", 'data/' + name + '.json', false);
+			Main.xhr.send(null);
+			return JSON.parse(Main.xhr.responseText);
+	},
+
+	GetMonsterJSON: function() {
+		try {
+			var data = JSON.parse(decodeURIComponent(location.search.substr(6)));
+			return data.monster;
+		}
+		catch(e)
+		{
+			console.log('PATSER FAILed');
+			Main.xhr.open("GET", 'data/monster.json', false);
+			Main.xhr.send(null);
+			return JSON.parse(Main.xhr.responseText);
+		}
+	},
+	
+	GetSuppliesJSON : function() {
+		try {
+			var data = JSON.parse(decodeURIComponent(location.search.substr(6)));
+			return data.items;
+		}
+		catch (e) {
+			console.log('PATSER FAILed');
+			Main.xhr.open("GET", 'data/items.json', false);
+			Main.xhr.send(null);
+			return JSON.parse(Main.xhr.responseText);
+		}
+	},
 
 	Xhttpr :  function()
 				{
@@ -291,22 +318,22 @@ var Main = {
 	},
 
 	DrawSupplies: new function () {
-	    var lastSuppliesCounts = 0;
+		var lastSuppliesCounts = 0;
 
-	    return function () {
+		return function () {
 
-	        if (Main.items.data[0].qty + Main.items.data[1].qty != lastSuppliesCounts) {
-	            lastSuppliesCounts = Main.items.data[0].qty + Main.items.data[1].qty;
+			if (Main.items.data[0].qty + Main.items.data[1].qty != lastSuppliesCounts) {
+				lastSuppliesCounts = Main.items.data[0].qty + Main.items.data[1].qty;
 
-	            $('.supplies-container').empty();
-	            $.each(Main.items.data, function (index, supplie) {
+				$('.supplies-container').empty();
+				$.each(Main.items.data, function (index, supplie) {
 
-	                for (var i = 0; i < supplie.qty; i++) {
-	                    $('.supplies-container').append('<div class="supplie supplie-' + supplie.name + '"></div>');
-	                }
-	            });
-	        }
-	    }
+					for (var i = 0; i < supplie.qty; i++) {
+						$('.supplies-container').append('<div class="supplie supplie-' + supplie.name + '"></div>');
+					}
+				});
+			}
+		}
 		
 	}
 };
