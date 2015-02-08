@@ -18,8 +18,8 @@ var Player = {
                     Main.player.model.body.position.x = 18.0;
                     Main.player.model.body.position.z = 6.0;
                     Main.player.model.body.rotation.y = -(Math.PI/1.65);
-                    Main.player.model.body.material = new BABYLON.StandardMaterial("player", Main.scene);
-                    Main.player.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/spiderman.png", Main.scene);
+                    //Main.player.model.body.material = new BABYLON.StandardMaterial("player", Main.scene);
+                    //Main.player.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/spiderman.png", Main.scene);
                 },
 
     Life: {
