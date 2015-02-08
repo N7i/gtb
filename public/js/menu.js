@@ -1,7 +1,13 @@
 ﻿"use strict";
 
 var Main = {
+    engine: {},
+    scene: {},
+    light: {},
+    ground: {},
+    camera: {},
     xhr: {},
+    canvas: {},
     json: {}, // récupére des objets json
     menu: {}, // objet json menu
     player: {},
@@ -17,8 +23,36 @@ var Main = {
         Main.items.data = Main.GetMyJson("items");
         Main.monsters.data = Main.GetMyJson("monsters");
         Main.listeMonsters.data = Main.GetMyJson("listeMonsters");
+        Main.canvas = document.getElementById("firstCanvas");
+
+        Main.engine = new BABYLON.Engine(Main.canvas, true);
+        Main.scene = new BABYLON.Scene(Main.engine);
+
+        Main.camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -3), Main.scene);
+        Main.camera.checkCollisions = true;
+        //Main.scene.activeCamera.attachControl(Main.canvas);
+        Main.camera.setTarget(new BABYLON.Vector3.Zero());
+
+        Main.engine.runRenderLoop(function () {
+            Main.scene.render();
+            Main.light.position = Main.camera.position;
+        });
+        BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", Main.scene, function (meshes) {
+            var mesh = Main.scene.getMeshByName("perso");
+            mesh.position.y -= 3;
+            Main.CreateAnimation(mesh);
+        });
+        
         Main.SetPlayerInfo(Main.player, Main.items, Main.skills);
         Main.SetShop(Main.items);
+    },
+
+    CreateAnimation: function (mesh) {
+        var time = 0;
+        Main.scene.registerBeforeRender(function () {
+            time += 0.03;
+            mesh.rotation.y = time;
+        });
     },
 
     SetPlayerInfo: function (player, items, skills) {
