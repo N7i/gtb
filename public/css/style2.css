@@ -131,6 +131,8 @@ body, html
 
 .shop-item-add {
     display: inline-block;
+    margin-left: 15px;
+    text-transform: capitalize;
 }
 
 .shop-item-qty {
@@ -167,7 +169,12 @@ body, html
 
 .flip-clock-wrapper {
     width: 100px !important;
+    margin: 0px !important;
+    position: absolute !important;
+    right: 30px;
 }
+
+
 
 /**  TRIDIV BUTTON TEST **/
 
