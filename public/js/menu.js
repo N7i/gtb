@@ -39,6 +39,18 @@ var Main = {
 
             engine = new BABYLON.Engine(canvas, true);
             scene = new BABYLON.Scene(engine);
+
+            switch (index) {
+                case 0:
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+
             camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -3), scene);
 
             camera.checkCollisions = true;
@@ -49,8 +61,8 @@ var Main = {
                 Main.light.position = camera.position;
             });
 
-            BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", scene, function (meshes) {
-                var mesh = scene.getMeshByName("perso");
+            BABYLON.SceneLoader.ImportMesh("", "public/mesh/", monster.img+".babylon", scene, function (meshes) {
+                var mesh = meshes[0];
                 mesh.position.y -= 3;
                 Main.CreateLoopRotateAnimationForScene(scene, mesh);
             });
