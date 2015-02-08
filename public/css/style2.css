@@ -34,6 +34,10 @@ body, button, img, p, a, ul, li, * {
     height: 100%;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .blue {
     color:#009597;
 }
@@ -102,6 +106,11 @@ body, button, img, p, a, ul, li, * {
     margin-left: 0px; 
 }
 
+#playerCanvas {
+    width: 100%;
+    height: 250px;
+}
+
 #monsterList .row {
     margin-top: 20px;
     padding: 5px;
@@ -113,7 +122,7 @@ body, button, img, p, a, ul, li, * {
     padding: 0;
 }
 
-#shopBox h2 {
+#playerInfo h2, #shopBox h2 {
     margin-top: 0px;
     margin-bottom: 15px;
     border-bottom: 1px solid;

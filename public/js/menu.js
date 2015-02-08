@@ -98,7 +98,39 @@ var Main = {
             });
         });
 
-        
+        // Draw player canvas
+        (function () {
+            var canvas = document.getElementById("playerCanvas"),
+               scene = null,
+               engine = null,
+               camera = null,
+               light = null;
+
+
+            engine = new BABYLON.Engine(canvas, true);
+            scene = new BABYLON.Scene(engine);
+
+            camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -10), scene);
+            camera.checkCollisions = true;
+            camera.setTarget(new BABYLON.Vector3.Zero());
+
+            light = new BABYLON.PointLight("DirLight", new BABYLON.Vector3(0, 10, 0), scene);
+            light.diffuse = new BABYLON.Color3(1, 1, 1);
+            //Main.light.specular = new BABYLON.Color3(0.6, 0.6, 0.6);
+            light.specular = new BABYLON.Color3(0, 0, 0);
+            light.intensity = 1.5;
+
+            engine.runRenderLoop(function () {
+                scene.render();
+                light.position = camera.position;
+            });
+
+            BABYLON.SceneLoader.ImportMesh("", "public/mesh/", "perso.babylon", scene, function (meshes) {
+                var mesh = meshes[0];
+                mesh.position.y -= 3;
+                Main.CreateLoopRotateAnimationForScene(scene, mesh);
+            });
+        });
 
         //Main.camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -3), Main.scene);
         //Main.camera.checkCollisions = true;
@@ -291,8 +323,8 @@ var Main = {
     },
 
     SetPlayerInfo: function (player, items, skills) {
-        document.getElementById("playerInfo_name").innerHTML = "Name: " + player.data.name;
-        document.getElementById("playerInfo_dr").innerHTML = "Damage Resistance: " + 0;
+        document.getElementById("playerInfo_name").innerHTML = "<span class=\" bold green \">Name</span>: " + player.data.name;
+        document.getElementById("playerInfo_dr").innerHTML = "<span class=\" bold green \">Damage Resistance</span>: " + 0;
         /*
         var itemsHtmlString = "";
         itemsHtmlString = "Items: <ul>";
@@ -304,9 +336,9 @@ var Main = {
         */
 
         var skillsHtmlString = "";
-        skillsHtmlString = "Skills: <ul>";
+        skillsHtmlString = "<span class=\" bold green \">Skills</span>: <ul>";
         for(var i = 0; i < player.data.skills.length; i++) {
-            skillsHtmlString += "<li>" + skills.data[player.data.skills[i]].name + ": " + skills.data[player.data.skills[i]].dmg + " damages for " + skills.data[player.data.skills[i]].cost + "  energy points" + "</li>";
+            skillsHtmlString += "<li><span class=\"bold blue \">" + skills.data[player.data.skills[i]].name + "</span>: " + skills.data[player.data.skills[i]].dmg + " damages for " + skills.data[player.data.skills[i]].cost + "  energy points" + "</li>";
         }
         skillsHtmlString += "</ul>";
         document.getElementById("playerInfo_skills").innerHTML = skillsHtmlString;
