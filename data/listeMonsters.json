@@ -2,7 +2,7 @@
     {
         "id": 0,
         "name": "DEBIT CHEQUES",
-        "img": "chequier",
+        "img": "cheques",
         "resistance": "0.3",
         "dodge": "0.05",
         "skills": [
@@ -15,7 +15,7 @@
     {
         "id": 1,
         "name": "RETRAIT CB DU 02-02-15",
-        "img": "atm",
+        "img": "ATM",
         "resistance": "0.5",
         "dodge": "0.0",
         "skills": [
@@ -28,7 +28,7 @@
     {
         "id": 2,
         "name": "CB CARREFOURMARKET",
-        "img": "trolley",
+        "img": "cadi",
         "resistance": "0.1",
         "dodge": "0.4",
         "skills": [

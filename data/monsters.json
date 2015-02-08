@@ -2,6 +2,6 @@
     "name": "cheques",
     "hp": 1,
     "resistance":0.3,
-    "dodge":0.9,
+    "dodge":0.3,
     "skills": [0, 1, 2, 3]
 }
