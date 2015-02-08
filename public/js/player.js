@@ -50,7 +50,7 @@ var Player = {
                         setTimeout(function()
                                     {
 
-                                        //window.location="index.html??del="+Main.monster.data.id+"&items="+Main.items.data;//;
+                            window.location = "index.html?index.html?data={ \"del\" : " + Main.monster.data.id + ", \"items\":" + JSON.stringify(Main.items.data) + "}";
                                     }, 5000);
                     }
                 },

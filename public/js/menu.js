@@ -25,10 +25,25 @@ var Main = {
         Main.monsters.data = Main.GetMyJson("monsters");
         Main.listeMonsters.data = Main.GetMyJson("listeMonsters");
 
+        // try update default info for query string params
+        try {
+            var data = JSON.parse(decodeURIComponent(location.search.substr(17)));
+            var listMonsterCpy = [];
+
+            $.each(Main.listeMonsters.data, function(index, monster) {
+                if (monster.id != data.del) {
+                    listMonsterCpy.push(monster);
+                }
+            });
+
+            Main.listeMonsters.data = listMonsterCpy;
+            Main.items.data = data.items;
+            
+
+        } catch (e) {  }
 
         Main.SetPlayerInfo(Main.player, Main.items, Main.skills);
         Main.SetShop(Main.items);
-
         Main.drawMenu(Main.listeMonsters.data);
 
         $.each(Main.listeMonsters.data, function (index, monster) {

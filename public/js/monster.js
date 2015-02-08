@@ -81,6 +81,11 @@ var Monster = {
                         //Main.cross.rotation.z = -Math.PI/4;
                         Main.cross.setPhysicsState(BABYLON.PhysicsEngine.BoxImpostor, { mass: 1 });
                         Main.endMatch = 1;
+
+                        Monster.Label.Write("Vous avez vaincu !");
+                        setTimeout(function () {
+                            window.location = "index.html?data={ \"del\" : " + Main.monster.data.id + ", \"items\":" + JSON.stringify(Main.items.data) + "}";
+                        }, 5000);
                     }
 
                 }
