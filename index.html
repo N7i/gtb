@@ -5,9 +5,8 @@
         <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="public/bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="public/css/style2.css">
+        <link rel="stylesheet" href="public/css/flipclock.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="public/js/lib/babylon.2.0-beta.debug.js"></script>
-        <script src="public/js/menu.js"></script>
     </head>
     <body>
         <div id="main">
@@ -26,25 +25,35 @@
             </div>
 
             <div class="row">
-                <div id="shopBox" class="col-sm-5">
+                <div id="shopBox" class="col-sm-12">
+                    <div class="shop-container">
+                        <div class="raw-container">
+
+                        </div>
+                    </div>
                 </div>
 
-                <div class="separation-column col-sm-2"></div>
-
-                <div id="playerInfo" class="col-sm-5">
-                    <ul>
-                        <li id="playerInfo_name">Name: </li>
-                        <li id="playerInfo_dr">Damage Resistance: 0</li>
-                        <!--<li id="playerInfo_items">
-                        </li>-->
-                        <li id="playerInfo_skills">
-                        </li>
-                    </ul>
+                <div id="playerInfo" class="col-sm-6">
+                    <div class="player-container">
+                        <div class="raw-container">
+                            <ul>
+                                <li id="playerInfo_name">Name: </li>
+                                <li id="playerInfo_dr">Damage Resistance: 0</li>
+                                <!--<li id="playerInfo_items">
+            </li>-->
+                                <li id="playerInfo_skills">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <script src="public/js/jquery.min.js"></script>
         <script src="public/bootstrap/js/bootstrap.min.js"></script>
+        <script src="public/js/lib/babylon.2.0-beta.debug.js"></script>
+        <script src="public/js/menu.js"></script>
+        <script src="public/js/lib/flipclock.min.js"></script>
     </body>
 </html>

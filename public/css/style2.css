@@ -48,6 +48,13 @@ body, html
     border-radius: 6px 6px 1px 1px;
 }
 
+.raw-container {
+    padding: 15px;
+    -webkit-box-shadow: inset 0px 1px 7px #000000;
+    border-radius: 0px 0px 5px 5px;
+    background-image: url('/public/img/opacity.png');
+}
+
 #monsterList .raw-container {
     padding: 15px;
     padding-top: 1px;
@@ -95,11 +102,71 @@ body, html
 }
 
 #shopBox {
-    background-color: green;
+    padding: 0;
+}
+
+#shopBox .shop-container {
+    background-image: url('/public/img/opacity.png');
+    -webkit-box-shadow: 0 9px 6px -6px;
+    border-radius: 1px 1px 6px 6px;
+    margin-right: 10px;
+    padding: 15px;
+}
+
+.shop-item-picture {
+    width:50px;
+    height:50px;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.shop-item-picture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.shop-item-add {
+    display: inline-block;
+}
+
+.shop-item-qty {
+    display: inline-block;
 }
 
 #playerInfo {
-    background-color: red;
+    padding: 0;
+}
+
+#playerInfo .player-container {
+    background-image: url('/public/img/opacity.png');
+    -webkit-box-shadow: 0 9px 6px -6px;
+    border-radius: 1px 1px 6px 6px;
+    margin-left: 10px;
+    padding: 15px;
+}
+
+
+/*** FLIPCLOCK **/
+
+.flip-clock-wrapper ul {
+    width: 30px !important;
+    height: 45px !important;
+}
+
+.flip-clock-wrapper ul li a div div.inn {
+    font-size: 35px !important;
+}
+
+.flip-clock-wrapper ul li {
+    line-height: 43px !important;
+}
+
+.flip-clock-wrapper {
+    width: 100px !important;
 }
 
 /**  TRIDIV BUTTON TEST **/

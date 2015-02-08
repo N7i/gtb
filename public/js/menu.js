@@ -39,7 +39,7 @@ var Main = {
 
             engine = new BABYLON.Engine(canvas, true);
             scene = new BABYLON.Scene(engine);
-            camera = new BABYLON.FreeCamera("MainCamera"+index, new BABYLON.Vector3(0, 0, -3), scene);
+            camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(0, 0, -3), scene);
 
             camera.checkCollisions = true;
             camera.setTarget(new BABYLON.Vector3.Zero());
@@ -257,15 +257,31 @@ var Main = {
     },
 
     SetShop: function (items) {
-        var shopBox = document.getElementById("shopBox");
-        shopBox.innerHTML = "Shop";
-        for (var i = 0; i < items.data.length; i++) {
-            shopBox.innerHTML += "<div id=\"item" + i + "\">";
-            shopBox.innerHTML += "<div> <img src=\"public/img/" + items.data[i].name + ".png\"/> </div>";
-            shopBox.innerHTML += "<div> <a href=\"#\" onclick=\"Main.AddItem(" + i + ");\">" + items.data[i].name + "</a></div>";
-            shopBox.innerHTML += "<div> 0.50€ </div>";
-            shopBox.innerHTML += "<div id=\"item" + i + "_qty\">" + items.data[i].qty + "</div>";
-            shopBox.innerHTML += "</div>";
+        var container = $("#shopBox .shop-container .raw-container");
+        var shopBox = container[0];
+        shopBox.innerHTML = "<h2>Shop</h2>";
+        for (var i = 0; i < items.data.length; i++)
+        {
+            var shopBox = '';
+            shopBox += "<div id=\"item" + i + "\" class=\"row\">";
+            shopBox += "<div class=\"shop-item-picture\"> <img src=\"public/img/" + items.data[i].name + ".png\"/> </div>";
+            shopBox += "<div class=\"shop-item-add\ btn btn-primary\"> " + items.data[i].name + " </div>";
+            // <a href=\"#\" onclick=\"Main.AddItem(" + i + ");\">" + items.data[i].name + "</a>
+            //shopBox += "<div> 0.50€ </div>";
+            shopBox += "<div id=\"item" + i + "_qty\" class=\"shop-item-qty\"></div>";
+            shopBox += "</div>";
+
+            if (i != items.data.length - 1) {
+                shopBox += "<hr />";
+            }
+
+            container.append(shopBox);
+
+            var flipClock = container.find('#item' + i + '_qty');
+            flipClock.FlipClock(items.data[i].qty, {
+                clockFace: 'Counter',
+                countdown: false
+            });
         }
     },
 
