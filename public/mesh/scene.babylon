@@ -74,5 +74,5 @@
 ,"instances":[]}
 ],
 "cameras":[{"name":"Camera","id":"Camera","position":[24.976,7.2226,-14.1651],"rotation":[-0.2465,-1.2205,0.1405],"fov":0.8576,"minZ":0.1,"maxZ":100,"speed":1,"inertia":0.9,"checkCollisions":false,"applyGravity":false,"ellipsoid":[0.2,0.9,0.2],"type":"FreeCamera"}],"activeCamera":"Camera",
-"lights":[{"name":"Point","id":"Point","type":0,"position":[0.0397,11.6675,-0.0557],"intensity":1,"diffuse":[1,1,1],"specular":[1,1,1]}],
+"lights":[],
 "shadowGenerators":[]}
