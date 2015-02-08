@@ -15,9 +15,9 @@ var Monster = {
                     //Main.monster.model.body.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
                     //Main.monster.model.body.material = new BABYLON.StandardMaterial("cheques", Main.scene);
                     Main.monster.model.body.position.y = 5.0;
-                    Main.monster.model.body.position.x = 11.0;
-                    Main.monster.model.body.position.z = -4.0;
-                    Main.monster.model.body.rotation.y = -0.90;
+                    Main.monster.model.body.position.x = -15.0;
+                    Main.monster.model.body.position.z = 4.0;
+                    //Main.monster.model.body.rotation.y = -0.90;
                     //Main.monster.model.body.material = new BABYLON.StandardMaterial("monster", Main.scene);
                     Main.monster.model.body.material.diffuseTexture = new BABYLON.Texture("public/img/"+Main.monster.data.name+".png", Main.scene);
                 },
@@ -25,10 +25,11 @@ var Monster = {
         Init: function()
                 {
                     Main.monster.model.lifebar = BABYLON.Mesh.CreateBox("monsterlife", 2, Main.scene);
-                    Main.monster.model.lifebar.scaling = new BABYLON.Vector3(1, 5, 1);
+                    Main.monster.model.lifebar.scaling = new BABYLON.Vector3(Main.monster.data.hp, 1.8, 0.2);
                     Main.monster.model.lifebar.parent = Main.monster.model.body;
                     Main.monster.model.lifebar.position.y = 35.0;
                     Main.monster.model.lifebar.position.z = -2.0;
+                    Main.monster.model.lifebar.rotation.y = -1.5;
                     Main.monster.model.lifebar.material = new BABYLON.StandardMaterial("texture1", Main.scene);
                     Main.monster.model.lifebar.material.diffuseColor = new BABYLON.Color3(0, 1, 0);
                 },
@@ -39,8 +40,8 @@ var Monster = {
                         if (((Math.floor(Math.random() * 100) + 0)/100) > Main.monster.data.dodge)
                         {
                             Main.monster.data.hp = Main.monster.data.hp - (dom*(1-Main.monster.data.resistance));
-                            // *5 car taille de base de la barre à voiravec des variables
-                            //Main.monster.model.lifebar.scaling = new BABYLON.Vector3(Main.monster.data.hp*5, 2, 2);
+                            // *5 car taille de base de la barre à voir avec des variables
+                            Main.monster.model.lifebar.scaling = new BABYLON.Vector3(Main.monster.data.hp, 1.8, 0.2);
                             Main.monster.model.lifebar.material.diffuseColor = Main.monster.data.hp >= 0.5 ? new BABYLON.Color3(0, 1, 0) : Main.monster.data.hp >= 0.3 ? new BABYLON.Color3(0.9, 0.4, 0) : new BABYLON.Color3(1, 0, 0);
                         }
                         else
@@ -52,7 +53,36 @@ var Monster = {
                     {
                         Main.monster.model.body.dispose();
                         Monster.Label.Write("Vous remportez la victoire");
+                        Monster.Life.Dead();
+                        setTimeout(function()
+                                    {
+
+                                        //window.location="index.html?del=";//+Main.monster;
+                                    }, 5000);
                     }
+                },
+
+        Dead: function()
+                {
+                    if (Main.endMatch == 0)
+                    {
+
+                        var pos = Main.monster.model.body.position;
+                        Main.monster.model.body.dispose();
+                        //var dead = BABYLON.Mesh.CreateBox("dead", 10, Main.scene);
+                        Main.cross.isVisible = true;
+                        Main.cross.material = new BABYLON.StandardMaterial("dead", Main.scene);
+                        Main.cross.material.diffuseTexture = new BABYLON.Texture("public/img/CelticCross.png", Main.scene);
+                        Main.cross.scaling = new BABYLON.Vector3(2, 2, 2);
+                        Main.cross.position = pos;
+                        Main.cross.position.y += 5;
+                        Main.cross.rotation.y += 0.7;
+                        Main.cross.checkCollisions = true;
+                        //Main.cross.rotation.z = -Math.PI/4;
+                        Main.cross.setPhysicsState(BABYLON.PhysicsEngine.BoxImpostor, { mass: 1 });
+                        Main.endMatch = 1;
+                    }
+
                 }
     },
     Label:{

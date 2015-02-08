@@ -275,7 +275,8 @@ var Main = {
     },
 
     SelectMonster: function (monsterIndex) {
-        Main.monsters.data[0].name = Main.listeMonsters.data[monsterIndex].name;
+        Main.monsters.data[0].id = Main.listeMonsters.data[monsterIndex].id;
+        Main.monsters.data[0].name = Main.listeMonsters.data[monsterIndex].img;
         Main.monsters.data[0].hp = Main.listeMonsters.data[monsterIndex].hp;
         Main.monsters.data[0].resistance = Main.listeMonsters.data[monsterIndex].resistance;
         Main.monsters.data[0].dodge = Main.listeMonsters.data[monsterIndex].dodge;

@@ -3,8 +3,8 @@
 var Map = {
 	 Init: function()
             {
-                Map.Camera.Free();
-                //Map.Camera.Fixe();
+                //Map.Camera.Free();
+                Map.Camera.Fixe();
                 //Map.Camera();
                 Map.Light();
                 Map.Ground();
@@ -31,7 +31,7 @@ var Map = {
 
          Fixe: function()
                 {
-                    Main.camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(20.79, 15.71, 15.89), Main.scene);
+                    Main.camera = new BABYLON.FreeCamera("MainCamera", new BABYLON.Vector3(26.49, 10.89, 0.84), Main.scene);
                     //new BABYLON.Camera("");
                     //Main.camera.applyGravity = true;
                     /*Main.camera.checkCollisions = true;
@@ -44,7 +44,7 @@ var Map = {
                     Main.camera.keysLeft = [81]; // Touche Q
                     Main.camera.keysRight = [68]; // Touche D;
                     Main.scene.activeCamera.attachControl(Main.canvas);*/
-                    Main.camera.setTarget(new BABYLON.Vector3(20.25, 15.28, 15.17));
+                    Main.camera.setTarget(new BABYLON.Vector3(25.52, 10.80, 1.06));
                 }
     },
 

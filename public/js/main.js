@@ -39,6 +39,7 @@ var Main = {
     json: {}, // récupére des objets json
     endMatch:0,
     cross:{},
+    cross2:{},
 
     Init: function ()
             {
@@ -79,7 +80,6 @@ var Main = {
                                                                                                     });
 
 
-
                 BABYLON.SceneLoader.Append("public/mesh/", "scene.babylon", Main.scene, function(scn)
                                                                                         {
                                                                                             Main.engine.hideLoadingUI();
@@ -101,14 +101,8 @@ var Main = {
                 Main.AddEvent(document.getElementById("skill1"), "click", function()
                                                 {
                                                     //Player.Animation();
-                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[0].cost)
+                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[0].cost && Main.endMatch == 0)
                                                     {
-                                                        Main.items.data[0].qty -= Main.skills.data[0].cost;
-                                                        for(var i = 0; i < Main.skills.data[0].cost; i++)
-                                                        {
-                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();*/
-                                                        }
                                                         Monster.Life.Update(Main.skills.data[0].dmg);
                                                         Main.action = 1;
                                                         setTimeout(function()
@@ -117,19 +111,30 @@ var Main = {
                                                                         Main.action = 0;
                                                                     }, 3000);
                                                     }
+                                                    /*
+                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[0].cost)
+                                                    {
+                                                        Main.items.data[0].qty -= Main.skills.data[0].cost;
+                                                        for(var i = 0; i < Main.skills.data[0].cost; i++)
+                                                        {
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
+                                                        /*}
+                                                        Monster.Life.Update(Main.skills.data[0].dmg);
+                                                        Main.action = 1;
+                                                        setTimeout(function()
+                                                                    {
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
+                                                                        Main.action = 0;
+                                                                    }, 3000);*/
+                                                    //}
                                                 });
 
                 Main.AddEvent(document.getElementById("skill2"), "click", function()
                                                 {
                                                     //Player.Animation();
-                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[1].cost)
+                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[1].cost && Main.endMatch == 0)
                                                     {
-                                                        Main.items.data[0].qty -= Main.skills.data[1].cost;
-                                                        for(var i = 0; i < Main.skills.data[1].cost; i++)
-                                                        {
-                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();*/
-                                                        }
                                                         Monster.Life.Update(Main.skills.data[1].dmg);
                                                         Main.action = 1;
                                                         setTimeout(function()
@@ -138,19 +143,29 @@ var Main = {
                                                                         Main.action = 0;
                                                                     }, 3000);
                                                     }
+                                                    /*if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[1].cost)
+                                                    {
+                                                        Main.items.data[0].qty -= Main.skills.data[1].cost;
+                                                        for(var i = 0; i < Main.skills.data[1].cost; i++)
+                                                        {*/
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
+                                                        /*}
+                                                        Monster.Life.Update(Main.skills.data[1].dmg);
+                                                        Main.action = 1;
+                                                        setTimeout(function()
+                                                                    {
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
+                                                                        Main.action = 0;
+                                                                    }, 3000);*/
+                                                    //}
                                                 });
 
                 Main.AddEvent(document.getElementById("skill3"), "click", function()
                                                 {
                                                     //Player.Animation();
-                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[2].cost)
+                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[2].cost && Main.endMatch == 0)
                                                     {
-                                                        Main.items.data[0].qty -= Main.skills.data[2].cost;
-                                                        for(var i = 0; i < Main.skills.data[2].cost; i++)
-                                                        {
-                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();*/
-                                                        }
                                                         Monster.Life.Update(Main.skills.data[2].dmg);
                                                         Main.action = 1;
                                                         setTimeout(function()
@@ -159,19 +174,30 @@ var Main = {
                                                                         Main.action = 0;
                                                                     }, 3000);
                                                     }
+                                                    /*
+                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[2].cost)
+                                                    {
+                                                        Main.items.data[0].qty -= Main.skills.data[2].cost;
+                                                        for(var i = 0; i < Main.skills.data[2].cost; i++)
+                                                        {
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
+                                                        /*}
+                                                        Monster.Life.Update(Main.skills.data[2].dmg);
+                                                        Main.action = 1;
+                                                        setTimeout(function()
+                                                                    {
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
+                                                                        Main.action = 0;
+                                                                    }, 3000);
+                                                    }*/
                                                 });
 
                 Main.AddEvent(document.getElementById("skill4"), "click", function()
                                                 {
                                                     //Player.Animation();
-                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[3].cost)
+                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[3].cost && Main.endMatch == 0)
                                                     {
-                                                        Main.items.data[0].qty -= Main.skills.data[3].cost;
-                                                        for(var i = 0; i < Main.skills.data[3].cost; i++)
-                                                        {
-                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
-                                                            Main.items.model.pop();*/
-                                                        }
                                                         Monster.Life.Update(Main.skills.data[3].dmg);
                                                         Main.action = 1;
                                                         setTimeout(function()
@@ -181,16 +207,34 @@ var Main = {
                                                                     }, 3000);
                                                     }
                                                 });
+                                                    /*
+                                                    if(Main.action == 0 && Main.items.data[0].qty >= Main.skills.data[3].cost)
+                                                    {
+                                                        Main.items.data[0].qty -= Main.skills.data[3].cost;
+                                                        for(var i = 0; i < Main.skills.data[3].cost; i++)
+                                                        {
+                                                            /*Main.items.model[Main.items.model.length - 1].dispose();
+                                                            Main.items.model.pop();*/
+                                                        /*}
+                                                        Monster.Life.Update(Main.skills.data[3].dmg);
+                                                        Main.action = 1;
+                                                        setTimeout(function()
+                                                                    {
+                                                                        Player.Life.Update(Main.skills.data[((Math.floor(Math.random() * (Main.monster.data.skills.length -1)) + 1)-1)].dmg);
+                                                                        Main.action = 0;
+                                                                    }, 3000);
+                                                    }*/
+                                                //});
 
                 Main.AddEvent(document.getElementById("mg0"), "click", function()
                                                 {
                                                         Main.action == 0 ? Main.action = 1 : Main.action = 0;
                                                 });
 
-                Main.AddEvent(document.getElementById("camera"), "click", function()
+                /*Main.AddEvent(document.getElementById("camera"), "click", function()
                                                 {
                                                         Main.action == 0 ? Main.action = 1 : Main.action = 0;
-                                                });
+                                                });*/
 
                 window.setInterval(function()
                                     {
