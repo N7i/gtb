@@ -12,14 +12,14 @@ body, html
 }
 
 body {
-    background-image: url('/public/img/background.jpg');
+    background-image: url('/gtb/public/img/background.jpg');
     background-size: cover;
     margin-bottom: 15px;
     background-repeat: no-repeat;
 }
 
 body, button, img, p, a, ul, li, * {
-    cursor: url('/public/img/cursor.png') 4 12, pointer !important;
+    cursor: url('/gtb/public/img/cursor.png') 4 12, pointer !important;
 }
 
 #main
@@ -55,7 +55,7 @@ body, button, img, p, a, ul, li, * {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 30px;
-    background-image: url('/public/img/opacity.png');
+    background-image: url('/gtb/public/img/opacity.png');
     -webkit-box-shadow: 0 9px 6px -6px;
     border-radius: 6px 6px 1px 1px;
 }
@@ -64,7 +64,7 @@ body, button, img, p, a, ul, li, * {
     padding: 15px;
     -webkit-box-shadow: inset 0px 1px 7px #000000;
     border-radius: 0px 0px 5px 5px;
-    background-image: url('/public/img/opacity.png');
+    background-image: url('/gtb/public/img/opacity.png');
 }
 
 #monsterList .raw-container {
@@ -72,7 +72,7 @@ body, button, img, p, a, ul, li, * {
     padding-top: 1px;
     -webkit-box-shadow: inset 0px 1px 7px #000000;
     border-radius: 5px 5px 0px 0px;
-    background-image: url('/public/img/opacity.png');
+    background-image: url('/gtb/public/img/opacity.png');
 
 }
 
@@ -130,7 +130,7 @@ body, button, img, p, a, ul, li, * {
 }
 
 #shopBox .shop-container {
-    background-image: url('/public/img/opacity.png');
+    background-image: url('/gtb/public/img/opacity.png');
     -webkit-box-shadow: 0 9px 6px -6px;
     border-radius: 1px 1px 6px 6px;
     margin-right: 10px;
@@ -168,7 +168,7 @@ body, button, img, p, a, ul, li, * {
 }
 
 #playerInfo .player-container {
-    background-image: url('/public/img/opacity.png');
+    background-image: url('/gtb/public/img/opacity.png');
     -webkit-box-shadow: 0 9px 6px -6px;
     border-radius: 1px 1px 6px 6px;
     margin-left: 10px;
