@@ -8,7 +8,7 @@ body, html
 }
 
 body, button, img, p, a, ul, li, * {
-    cursor: url('/public/img/cursor.png') 4 12, pointer !important;
+    cursor: url('/gtb/public/img/cursor.png') 4 12, pointer !important;
 }
 
 canvas
@@ -35,13 +35,13 @@ canvas
 }
 
 .supplie-energy {
-   background-image: url('/public/img/energy.png');
+   background-image: url('/gtb/public/img/energy.png');
    background-size: cover;
 background-position: -8px;
 }
 
 .supplie-potion {
-    background-image: url('/public/img/potion.png');
+    background-image: url('.gtb/public/img/potion.png');
    background-size: cover;
     background-position: 1px -2px;
 }
